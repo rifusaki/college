@@ -1,6 +1,11 @@
 n_sf = []
-sta = 2
-sto = 100
+
+while True:
+    try:
+        sto = int(input("Límite superior para encontrar primos: "))
+        break
+    except:
+        continue
 
 def div_prev(num,lim):
     chk = False
@@ -23,7 +28,7 @@ def div_prev(num,lim):
     else:
         return False
 
-for x in range(sta,sto+1):
+for x in range(2,sto+1):
     if div_prev(x,len(n_sf)) == False:
         n_sf.append(x)
 
