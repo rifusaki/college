@@ -4,7 +4,6 @@
 #include <cmath>
 
 void print_divisor(int sta, int sto, int div); // declarar
-void print_primes(int sta, int sto);
 
 int main(void) {
 	int m = 1, n=100, d = 2; // const int para hacerlo constante

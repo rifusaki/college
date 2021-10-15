@@ -1,4 +1,5 @@
 n_sf = []
+cter = 1
 
 while True:
     try:
@@ -9,8 +10,8 @@ while True:
 
 def div_prev(num,lim):
     chk = False
-    aaa = True
-    while aaa == True:
+    lpck = True
+    while lpck == True:
         for i in range(2,lim+1):
             #print("\n",num,i)
             #print("mod", num % i)
@@ -20,7 +21,7 @@ def div_prev(num,lim):
             else:
                 continue
                 #print(false)
-        aaa = False
+        lpck = False
 
     #print("chk", chk)
     if chk == True:
@@ -29,7 +30,9 @@ def div_prev(num,lim):
         return False
 
 for x in range(2,sto+1):
-    if div_prev(x,len(n_sf)) == False:
+    #print(len(n_sf))
+    if div_prev(x,cter) == False:
         n_sf.append(x)
+    cter+=1
 
 print(n_sf)
