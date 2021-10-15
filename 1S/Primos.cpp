@@ -1,3 +1,5 @@
+// Faltan: input e implemetación en lista
+
 #include <iostream>
 #include <cmath>
 
