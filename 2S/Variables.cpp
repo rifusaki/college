@@ -17,7 +17,7 @@ int main(void){
   // El valor máximo de float es 3.40282e+38, menor que 1.0e40 (por el exponente)
 
   float maxf = std::numeric_limits<float>::max();
-  std::cout << "\n \n Límite float: " << maxf;
+  std::cout << "\n \n Límite float: " << maxf << "\n";
 
   return 0;
 }
