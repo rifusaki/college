@@ -18,4 +18,6 @@ int main(void){
 
   std::cout << a << "\n"; // Se utiliza la externa.
   std::cout << &a << "\n";
+
+  return 0
 }
