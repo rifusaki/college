@@ -8,7 +8,7 @@ bool print_primes(int num, int lim);
 int main(void) {
   int cter = 1;
   for(int x = 2; x < 101; x++){
-    if(print_primes(x,cter) == false){
+    if(is_prime(x,cter) == false){
       std::cout << x << "\n";
     }
     cter++;
@@ -16,7 +16,7 @@ int main(void) {
   return 0;
 }
 
-bool print_primes(int num, int lim){
+bool is_prime(int num, int lim){
   bool chk = false;
   bool lpck = true;
   while(lpck == true){
