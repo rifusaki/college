@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   const double xmax = std::atof(argv[2]);
   const double h_in = std::atof(argv[3]);
 
-  const double xsol = std::cos(xmax) - std::cos(xmin);
+  const double xsol = - std::cos(xmax) + std::cos(xmin);
 
   std::cout << xsol << "\n";
 
@@ -32,10 +32,10 @@ double trape (double a, double b, double n, fptr f) {
   double res = 0.0;
   const int h = std::floor((b-a)/n);
 
-  for(int i = 1; i < h; i++) {
+  for (int i = 1; i < h; i++) {
     double xi = a + i*n;
     res += f(xi);
   }
-  res = n*(res+0.5*(f(a) + f(b)));
+  res = n*(res+((f(a) + f(b))/2));
   return res;
 }
