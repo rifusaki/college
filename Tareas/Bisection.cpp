@@ -3,8 +3,8 @@
 #include <cstdlib>
 
 double f(double x);
-//template <class fptr>
-//double bisection(double xl, double xu, fptr fun, double eps, int & niter);
+template <class fptr>
+double bisection(double xl, double xu, fptr fun, double eps, int & niter);
 template <class fptr>
 double bisection_rec(double xl, double xu, fptr fun, double eps, int & niter);
 
@@ -15,8 +15,9 @@ int main(int argc, char **argv) {
   const double XU = std::atof(argv[2]);
   const double EPS = std::atof(argv[3]);
   int counter = 0;
-  std::cout << bisection_rec(XL, XU, f, EPS, counter) << std::endl;
-  std::cout << counter << std::endl;
+  std::cout << "\nClase: " << bisection(XL, XU, f, EPS, counter) << ", " << counter << std::endl;
+  counter = 1;
+  std::cout << "Recursiva: " << bisection_rec(XL, XU, f, EPS, counter) << ", " << counter << "\n\n";
 
   return 0;
 }
@@ -24,7 +25,7 @@ int main(int argc, char **argv) {
 double f(double x)  {
   return 9.81*(68.1)*(1 - std::exp(-x*10/68.1))/x - 40;
 }
-/*
+
 template <class fptr>
 double bisection(double xl, double xu, fptr fun, double eps, int & niter)
 {
@@ -45,25 +46,24 @@ double bisection(double xl, double xu, fptr fun, double eps, int & niter)
   niter = iter;
   return xr;
 }
-*/
 
 template <class fptr>
 double bisection_rec(double xl, double xu, fptr fun, double eps, int & niter) {
   double xr = 0;
-  int iter = 1;
+  int iter = niter;
 
   xr = (xl + xu)/2;
   if (std::fabs(fun(xr)) <= eps) return xr;
   else {
     iter++;
     if (fun(xr)*fun(xl) < 0) {
-      xu = bisection_rec(xl, xu, fun, eps, niter);
+      xu = xr;
     }
     else {
-      xu = bisection_rec(xl, xu, fun, eps, niter);
+      xl = xr;
     }
   }
 
   niter = iter;
-  return xr;
+  return bisection_rec(xl, xu, fun, eps, niter);
 }
