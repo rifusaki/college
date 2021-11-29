@@ -40,8 +40,15 @@ int main(int argc, char **argv) {
 }
 
 // implementations
-void multiply(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3)
-{
-  const int N = std::sqrt(m1.size()); // assumes square matrices
-  delete this line and implement the matrix multiplication here
+void multiply(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3) {
+const int N = std::sqrt(m1.size()); // assumes square matrices
+
+for (int i = 0; i < N; i++)  {
+  for (int j = 0; j < N; j++) {
+    for (int k = 0; k < N; k++) {
+      m3[i*N+j] += m1[i*N+k]*m2[k*N+j];
+    }
+  }
+}
+
 }
