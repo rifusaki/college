@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
   fout.close();
 
-  system("gnuplot -p -e \"plot 'mult.txt' u 1:2 w linespoints pt 7\"");
+  system("gnuplot -p -e \"plot 'mult.txt' w linespoints pt 7\"");
 
   return 0;
 }
