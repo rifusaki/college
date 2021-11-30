@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 void multiply(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3);
 
@@ -14,6 +15,8 @@ int main(int argc, char **argv) {
   const int SEED = std::atoi(argv[2]);
 
   auto ref = std::chrono::duration<double>(0);
+
+  std::ofstream fout("mult.txt");
 
   for (int N = 4; N <= r; N=2*N)  {
     std::cout << "N: " << N << "\n";
@@ -42,9 +45,16 @@ int main(int argc, char **argv) {
     }
 
     auto elapsed = std::chrono::duration<double>(stop - start);
+    double relt = elapsed.count()/ref.count();
     std::cout << "Tiempo: " << elapsed.count() << "\n";
-    std::cout << "Tiempo relativo: " << elapsed.count()/ref.count() << "\n\n";
+    std::cout << "Tiempo relativo: " << relt << "\n\n";
+
+    fout << N << "\t" << relt << "\n";
   }
+
+  fout.close();
+
+  system("gnuplot -p -e \"plot 'mult.txt' u 1:2 w linespoints pt 7\"");
 
   return 0;
 }
