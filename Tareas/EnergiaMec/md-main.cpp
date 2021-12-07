@@ -14,10 +14,15 @@ int main(int argc, char **argv)
   print(ball, 0.0);
 
   // evolve
+  double E0 = 0.0;
   for(int istep = 0; istep < NSTEPS; ++istep) {
     time_integration(ball, DT);
     compute_force(ball);
+    double E = ball.U+ball.K+ball.R;
+    if(istep == 0){E0 = E;}
     print(ball, istep*DT);
+    std::cout << E << "\t" //11
+              << abs(E/E0)/E0 << "\n"; // 12
   }
 
   return 0;

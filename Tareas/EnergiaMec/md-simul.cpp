@@ -56,5 +56,5 @@ void print(Particle & body, double time)
             << body.Vz << "  "
             << body.U << "\t"   //8
             << body.K << "\t"   //9
-            << body.R << "\n";  //10
+            << body.R << "\t";  //10
 }
