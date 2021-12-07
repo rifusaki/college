@@ -1,10 +1,11 @@
 #include "md-simul.h" // this has all functions declarations
 
-int main(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3)
+int main(int argc, char **argv)
 {
   Particle ball;
-  DT = std::atoi(argv[1]);
-  NSTEPS = int(TF/DT)
+  double DT = std::atof(argv[1]);
+  int NSTEPS = int(TF/DT);
+  std::cout << NSTEPS << "*\t" << DT << "=\t" << TF << "\n\n";
 
   // start system
   initial_conditions(ball);
