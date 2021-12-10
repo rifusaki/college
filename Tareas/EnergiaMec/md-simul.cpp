@@ -47,13 +47,13 @@ void compute_force(Particle & body)
 
 void print(Particle & body, double time)
 {
-  std::cout << time << "  "     //1
-            << body.Rx << "  "  //2
-            << body.Ry << "  "  //3
-            << body.Rz << "  "
-            << body.Vx << "  "  //5
-            << body.Vy << "  "  //6
-            << body.Vz << "  "
+  std::cout << time << "\t"     //1
+            << body.Rx << "\t"  //2
+            << body.Ry << "\t"  //3
+            << body.Rz << "\t"
+            << body.Vx << "\t"  //5
+            << body.Vy << "\t"  //6
+            << body.Vz << "\t"
             << body.U << "\t"   //8
             << body.K << "\t"   //9
             << body.R << "\t";  //10
