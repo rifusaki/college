@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<pre><code class="r"># Librerias
+library(ggplot2) #Graficas
+library(dplyr) #Ordenar datos
+library(reshape2) #Ordenar datos
+library(tidyverse) #Mas datos
+library(RColorBrewer) #Colores personalizados
+library(modeest) #Datos
+library(EnvStats) #CV
+library(scales) #Tortas
+
+# R Commander
+library(Rcmdr)
+
+
+# Importar datos
+EAlumnos &lt;- 
+  readXL(&quot;G:/Mi unidad/III Semestre/Probabilidad y Estadística Fundamental/Parcial/Alumnos.xlsx&quot;,
+         rownames=FALSE, header=TRUE, na=&quot;&quot;, sheet=&quot;alumnos%20simulados&quot;, 
+         stringsAsFactors=TRUE)
+alumnos &lt;- data.frame(EAlumnos)
+
+
+# Punto 2: Gráficas género, carrera y estrato
+## Barras
+p2_alumnos &lt;- alumnos %&gt;% count(carrera,genero,Estrato) %&gt;% group_by(carrera,genero,Estrato) # SE ME
+
+p2_colores = brewer.pal(n = 9, &quot;YlGnBu&quot;)[3:9]
+
+ggplot(p2_alumnos, aes(x=carrera, y=n, fill=forcats::fct_rev(factor(Estrato)))) +
+  facet_wrap(~ genero, scales = &quot;free_x&quot;) +
+  scale_fill_manual(values=p2_colores) +
+  geom_col(position = position_stack()) +
+  xlab(&quot;Carreras&quot;) + ylab(&quot;Cantidad de estudiantes&quot;) + 
+  labs(title=&quot;Cantidad de estudiantes por carrera, género y estrato&quot;, fill=&quot;Estrato&quot;, caption=&quot;Grupo 5&quot;) +
+  theme_light()
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAIAAAApSmgoAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO3db2xb153g/R+f3WSnkZMmaGWnoTglM5TSVflsCqMJa6qagoNdpJQ9rGZW0WIMVEaLhrJS4KH1wnlhGli/sPrCfkFxgYkiJXgKqwstRiYGCquIE8yiQkYjaphkjHQfStuIbKktRW9tTeA0iTKLZAA+Ly7/64oiJVIUj7+fN9Ilzz333MPDHw/PPTzXkMlkBACgrv+r2QUAADQWgR4AFEegBwDFEegBQHEEegBQHIEeABTX1ECfCPQYcobDB85qZxbhYUNPIFHN/numrD6rBskVQP9MUVeJQM+BmyRwdDQv0IeHDZ1rlzOa+Hisr+Y3VnHIs3qXM5Ou+peykfYXsvdxpnw21Ch8/YJtoXXaU02vL43hvtSsQB8e7pvyLOTfSlbvjXHH1NWmdpmBLNdk60R5oBqZpljwiHgWKj2bo6WKjzvEMz7u0B5zjMeLEjnG49kEC2W7ezwe7VndPHdLqVuSkgSFR3c5Bb0EhQJo+exe/srnovts9RVVbfHKxMcdjvHxHfvFc0fK7xUfdzg8Hode5RQSFz2newr5HMpz21HysgS6r/Ju8uXxjOvWePHLUVqlu6csLszOyilS9g4oflXLUtXckCpVyI7GULGQUEbzAv2u7aroLbDgKYqDuT3yz+sHx8LuRTvp5amfUr8kRQkKR4qPO/TOQjfBQslHTnlOtZyL3rM1VFT1xdtxUsXRNv8RUlSAQnTTi7FFias4haKUOvVSKHlJAt1XeTdldVteU2WHKK/Smguj+7Gn86LopqixIVWskJJD7VVIqOIIzrpxTWZyX5xd/UUdEsfgaauISGe3Q3c/TXhuyjF+0SUiYvVezu2ul6d+yr2ySrwxG/H05x+MzL5RNty0a4LIWjxXlmWvdY9KqKaE+6qoAxQvN9TmujjuiKzFJbEek2xW4ur3SGw9m5Wju7PSuRRdZtj1FIpyyP2/a8nziXfLTU9tL+6OKt2zMLtWTo719KBjai5cnlvB/l+pqitkz0JCFc0L9LnmqqMwG6dvqvCorauK6JhYj1WZ564p98xKpvp0ilc5gWsysyB9tc0w2rOE+62ogxbP2mWT2HoivhYpBOTObkf+FdUpQPWvy44civ/XrfmiBPq56R22pDzFH4l7HUKqS7lr5eQVIn3ijVnJfQjudYhqXqmqK2TvQkIRTQr0rn6P5LozWeFhreEmAj2ds4Plo8nVsnbZdB7Vy1M/5Z5ZiZR+w9XtU+kmcE3mjj/VV1Wo36OE+6+ogxYvsR4TW5e1JDKUxIxqz6XmU6hY87XkVlqe+FqkukNUX5gqKsfqveyZmgtL4o1ZyX5jqOoQVb9Se1ZILa8gWlqzevSui+OOqb78zPREoKcv+1U6vhbJdUnCw3v0y2Tnl01Xvydy4XpYy/RqdnfdPHVT7plVyTduvZlqugkSgR79afi58lu7bLlPvsQbs5FqSri/iqqteCVys6LC1y9EPP2u4jJLeG6q8jeJonMpHK6mU9iz5mvKbX8vbvWFqapyXP2eqbnALnF+fw2p2K4VotPq9n4F0dKqG8pvDP05EsXzABayV470r1VmU+ol0HYfL75cVZ6nfspS+gl2zmPZ7cT05mgUHiwqf1ERHePjngrnsuP0a6uoGopXXhEej6c8he6sm92u6enMuqn+FHYp+Y5Lmjtf5V0v/Bdm3ehOqdI7xI4rmZXOvZoJLQseqXQNtPaGtHeFlDYGZt3cHwwZbjyCvSUCPZ1rl1tzdnkiMPzG6clKozDhYcPV7niVl8jrqpXrFS3kCM66Aeop8cZa986RkeIxkOaNWuhOtwHq7l83uwBAY1m9k169R2+Mz3Z2Gi6IiDjG48uHHW0TgZ7OCxHxLGSI82g4hm4AQHEM3QCA4gj0AKA4Aj0AKK45F2Pn5+ebclwo7MyZM8WbtDHUXVkbayH06AFAcQR6AFAcgR4AFEegBwDFEegBQHEEegBQHIEeABTHomZH0iNPfeePOx/ObX0c/7u33v+omeWBep745pmTcmv+3dsiWoN7OJ7dgHoI9EfV727xtkODtT38iMhHIo985fGHZbvZpUHjMHQD3Kc+/t32w195REQe+crD27/7uNnFQQPRoz+qHj955sxJEaFvj0b5+PbHD3/lEZGvPPzx7Y/bnmh2cdA4BPqjivCOhvvkY+n8yiMfy8f/+xN5vNmFQQMxdAPcv27f3n6464mHP+ZSv+II9MB97PZteVxu89VRdQzdHEkfvf/Wu80uA9R2+923REQ+enf+togILU5p9OgBQHEEegBQHIEeABRHoIciuHcgGq1121jTLsbWdPfFZDJpsVjqW4CWyJNCVm/nm7DWO3yqWjOHn2dLFHIfebZuoKdHDwCKI9ADgOII9ACgOAI9ACiOQA8AiiPQA4DiCPQAoDgCPQAojkAPAIoj0AOA4gj0AKA4Aj0AKI5ADwCKI9ADgOII9ACgOAI9ACiOQA8AimvaHaaAlvYPd9/YO1Gb3Lm7tmeqbx0/XYcCAbujRw8AiiPQA4DiCPQAoDgCPQAojoux6qjq8qBUdYWQy4OASujRA4DiCPQAoDgCPQAojkAPAIoj0AOA4gj0AKA4plcCqAGL/LQievQAoDgCPQAojkAPAIpjjB5AM7F0xyE4cI8+HfR6g+nsf2632+32R0VnEwDQHAfs0aeD16aTMiQiEp1d6p0IBYxRv9sfDY1K6aa9HoWFEuo1bYPuG1ClAwX6dPDaUu+Qc0lEJJ2S3lNGEbE7nDOpdFpKNsVuFJH5+fn8vslksqZj1ZpemTxryLCtGQfdR/o6lXPPg+7jtVCwtuueZ91PvHk1ub9dWtEBAn06eG2p96WAaXYpJSKbqQ05VXiybFNz5swZ7Z/5+XmLxVL9oZLJZE3plcmzpgyrmblcpYa+OvUqZ9lBV1dXKyfYk5K1Xfc8637izapJqb0yd7axVrH/QJ9eWUomkyNuEZGN4KmXTOZU0bMdpZtoUfw6BlDA/i/GGgcCoVAoFPI5LUMvDRiNJllaSYtINLJoNpVv1q28AIAa1W96pX2wd2bEPS3i9IXsIlK2CQBojoMHevtoQAvkxoFAaKDweNkmAKA5+GUsACiOQA8AimMJBKiPH9njPkePHgAUR6AHAMUR6AFAcQR6AFAcgR4AFEegBwDFEegBQHEEegBQHIEeABRHoAcAxbEEAqAs1n6Ahh49ACiOQA8AiiPQA4DiGKMHjop63Yqd8XSUoUcPAIoj0AOA4gj0AKA4Aj0AKI5ADwCKI9ADgOII9ACgOAI9ACiOQA8AiiPQA4DiCPQAoDgCPQAojkAPAIoj0AOA4limWB1/s/lv6pXVt47XKycAzUePHgAUp2CPnhsi4xDw/QkthB49ACiOQA8AiiPQA4DimjZGn0wmG5W+rebC1OGgB9jlkDOs7aCNqMw65blnzTT2LOqngTVzhF++Qp5qvWGPpqYFeovFUn3iZDJZffo9L7FWr6ZCSo3lrH+G935dr+PmD9qIyqxXnmU1s7q62ugjlhz0CNd2S7x8+Txb6A27s421CgVn3QBoIcxfOgQEegA1IC63IgJ901Q137+Kyf7CfH8AFTHrBgAUR6AHAMUR6AFAcQR6AFAcgR4AFEegBwDFEegBQHHMo68Ka9wDaF0EelTCzyABBTB0AwCKI9ADgOII9ACgOAI9ACiOQA8AimPWDdTH3CHc5wj0OGz1CrvEXKBKDN0AgOII9ACgOAI9ACiOQA8AiiPQA4DiCPQAoDgCPQAojkAPAIoj0AOA4vhlLKAs1n6Ahh49ACiOQA8AiiPQA4DiCPQAoDgCPQAojkAPAIoj0AOA4gj0AKA4Aj0AKI5ADwCKI9ADgOIOEujTQa/b7Xa7/dEqNgEAzXGARc2is0u9E6GAMer3BtP2gc38ptsfDY1K6aa9fkUGFFWvNchYgAxlDhDo7aMBu4ikUxtmk1HSK9J7yigidodzJpVOS8mm2I0iMj8/n987mUzWdLQa0rfVlHF1B22VPI9qho3Ic88MW+IsGpFnSxSyEXnuI8NGnNcRdMBliqN+99ii0xcSiaY25FThic3STc2ZM2e0f+bn5y0WS/WHSSaT1ae/c3et+pwryx+0NfK89+s6Z3i08yxrEqurq40+Yqvk2RKFlIa22+rUFFhEr421igNejLWPhkIhR8QbTHeYzMVPlG0CAJpl/4E+HfQWX2c1mmRpJS0i0cii2WQs2zxwOQEA+7T/oRvjwEsmr9s9JmIZmggYRQZ7Z0bc0yJOX8guOzYPD3fVAYBiBxmjNw4EQgPVbqLh/u7OF5pdBABHET+YAgDFEegBQHEEegBQHIEeABR3wB9MAbi/cM2/FdGjBwDF0aNvGub7Azgc9OgBQHEEegBQHEM3wH5wTRIthB49ACiOQA8AiiPQA4DiCPQAoDgCPQAojlk3AJqJ+UuHgB49ADRMeNhQ0BNI7JJot2f2k0xHxUAfHjYMh/MlHQ7v6wgAcD/zLGSylr1WvQSJ9Vg1+VSZTE+FQJ8IXI2NX3QlAlenPAuZ+Hjs6j4/TAAAOYlAT3EPPxE4dyESudDZE0gkAj09w8M92X51IZ22lU9W9FSVXfwKgT6+FrF1WSW+FnF0d4q1yxZZi9frTAHgPjHVVzJyE75+wab18RdsF66Hxeq9Me5wjMe17n4k1n0jk8lMuhKBc7OD8Uwmk1nwTM2VJEsEzmWzWLBdOFdNqK8Q6Du7HSISnptyDJ62SmI95ujurNOJA8D9Ij90o4Xyzm6HFvqHZTIz6SpL7Bg8rQ3vWL3LN+ScwWAw9E1JbL04msfXIp5+l4iIq99TVQe8QqC3ei9Ln6FvyjF42hoe7pwdvKE/vgQAqJbVu5zJZOLjWrjf9dpneNjQuXZZ69Ef+JgVL8a6JnOfQq7J3S4jAACqlgj0GIbDWrhf8JT11Utp3fbw3FTZ453djqm5sGjPVTXSUnl6ZX6+TSLQs995PQBwP8uP0RuyEX5Bso/0xcZveK1i7bLlrrIWuPo92o5z4pHIWlwKyazeG+OxPoPBYOiThaq64BV+MJUI9PTJQmZhzjAnVu+NwZ5zgdN06wGgeq7JTGZyr8cKDywv66WanCx/xLuc8dZQisqzbrID/iLCrBsAaFGVZ91kx4FEqh8LAgAcLRWGbqze5YVhg6FPRKYMU+JZyNy/4zbcyBtA66q8qJne8BIAoKVUCPThYcNcf2E+f9km7gusLAgoQHeMXltHoW+qeFqQoY8xegBoRbo9eqt3OeOlCw9V8L0EzfIPd9+oKf23jp9uRDEqzLpxXczOyS+e7A8AaDGVxuivX5Dx+H081QYAlFB5CQRbF1EeAFpchR69q9/TNxeedDFIj7pixBw4ZBV69OG50mk3jNEDQCuqdDF2MlOGGTgAcMhy9w08wArClX4Zmwj0dF6IFD3gWSDWA62DUTIFJALn1i5nMi5JBHquh737C8F7z7rpum6Y689MyrBhrr+OUT6ZTDY0fV004qAtkacahWyJs2hEni1RyEbkuY8MmxJYahJfs8mawdAn4hiPL++dXlfltW5sXVbp7HbE1hPirfOlWYvFUn3iZDJZQ/p7v95PgfQUDtoSef7qdp0zPNp5ljWJ1dXVRh+x4XnWqUm02Ik3opDVqS2w6LWxQzEl/ZnMpEh4uCeQ2N89QSovUxxbT7AQPQA0kefgYymVbw5uu3AukMj+QrYvNn6RAXoAOEyd3bH8fUH2/cumikM3rsmMS6Tmu1YBAOrD6r3R3XPQMXrdHn142DAczt0ZnHn0ANA8Vu9yJpPJZA5wy27dHn22J+/iriMA0Pp269HrokcPAK1ntx69NpmnaEH6cJ3n0QOA8hq0vnytKv1gam7K058fu2GJMwCo0ZVb/7229Cf/fSOKUXke/VR+Wo+E57iVIAC0oorz6JcXJL965dXu+AGu+QIAmqXyEgjZwXoAQOuqtB498+gBQAFVr0e/4HGwBAIAtKDKQzdFXP22vn0vhgwdrBUOoAr5O4M4xvd7pbTyzcGLj7Ue20/+AICDiK/ZFg64BkKlefTDhr6pom3HeLwluvP0lAGoI7Eem7pgmDpIh76We8YyuxIADlt8TcbjmUwmc0Ou7/eusZVn3RRPsynbBAA0nmsy28mOr+17/Fw30Gs3He+bkqm+wtzKPn4ZCwCHLBHoGW7MjUes3uWMt3RNMwCNxuUl7FS48YhnYd+/X604Rr8gfcPh/C+nGLgBgEOXu/HIAXrdFQJ9InA1Nn7RlQhcnfIsZOLjsav7vRAAAGieCoE+vhaxdVklvhZxdHeKtcsWWYsfXsEAAPVRYR59Z7dDtOWJB+NWSbwRc3RfPLRyAUDra9D68rWqEOit3stiMPSJYzxuDQ8bZgfjy0ykB4Dq/Ul4uab0v3D1NKIYFde6KVqlWLtdOACg5VRe6yY/3yYR6OnhUiwAtKKKs256+mQhs+AREav3xuDsOUI9ALSeyrNuPP35ARtm3QBAa6o862ZqLjzZr22F56aYdXO0JeL/Ure8uCKDXdDMWtHeNwfPLnnTJwssXwkATXGw66SVL8YWr1TMojcA0BSJwLkLkQPsX/UdpgAAzZAInJsdHPccIIeq7xkLAA3AoP8eEoFzs4M3lruuz67vOw8CPQAcXYk3ZiORSKdBRCQWOL2/S6X8YAoAjq7cIsULHsf4jf1OiOEHUwCguApDN7kfTM2JiPaDqbm4yP05w5Jb/wBoKtfkckNuPKL9YCq3FZ7jnrEA0IoqLlO8vDBsMPSJyJRhSjwLGX4wBQCtp/Ksm6J1inVE/e6xRRERpy80apd00DsyncxtlW8CwH2nQevL10o30IeHDX1TOo97Fop+H5sOzogvFLJLOui9FkzbTbNLvROhgDHqd/ujoVEp3STUA7j//OF/eaum9L/9f77TiGLoBvpsRz48bJjrz4X28LBhrr/4WoBxIDCq/WMym8WYTknvKaOI2B3OmVQ6LSWbYjeKyPz8fH73ZDJZU0FrTV8XjThoS+SpRiFb4iwakWdLFLIRee4jw6YElsNXYegmPDfl6c8P3Lj6PX1z4UnXjuu+Uf+MaTAgm5ENOVV4dDNVsqk5c+aM9s/8/LzFYqm+lMlksob0v7pdfc6VFQ7aGnn+tt4ZHukTL2sSq6urjT5iq+TZ2ELWv5k1oN1Wp7bAotfGWsXeyxRnQ7v+MsVRvzviCI0aRcRkThU90VG6CSiGH+6jhew968agbTnG42W/vU0HvSOps7nhd6NJllbSAwPGaGTR7Bg1Sslmw8qPxiKcAQrY/6yb6Ox0UmTMvSgilqGJwMBg78yIe1rE6QvZRaRsEwDQHPtf1Mw+GgqV9tQHAqGBwpaxdBMAsA+JQE/nhUjZtMfasB49ABxh4euzg/FMJrMgV/e93BjLFAPAEZZd5CaxHrN17Xdxgv3/YAoAjqZ/uPtGVena5M7dtcpJvnX8dB0KdFDhYUPflGchs9/99/+DKaBVMHcILc41mclMhod7Ap37u/HIwX8wdVBVffZW8cErR+WzF3uoW9gl5uI+kAj0XO9aPuBYCssUA8DRZfXe6L5qMBgMhqvd+77D1AF+MAUAaDirdznjPVgWB1mmGADQAioF+tw0/Txm3QCthKvQ0FS6GHv9gozHM13XDXP9mUlh1g0A1KZB68vXqvIvY21dVunsdsTWE+Lq9xRdmgUAtIrKyxTH1hPi6rJF5uKHVyIAUMUfnfurmtL/+sZ/akQxKs66uWwznAucXr44frXTYBDHeJwLs3XE+CmAw1Fx1o1rMuMSETn45B4AQLPojtGHhw26hhmjB4CWoxvoXZOZTCaTWfCIZyGTteARD7NuAKD1VJh1E56bKgrtzLoBgNbEWjcAcJTlx9L3P3heIdBbvcsL0pcbn7/azVo3AHDIEoGrspDJZDLx8di+bzHFWjfAUcECztjJ6l3WgrC1y2aTeq5eqd1xpH+u/D5TrbHWDfPTASgnPHy1++LyPnfe7Q5TLhFx0Z0HgObL3u5v34PnlWbdDJeM/ZdtAgAaLxHoKbqp6/7oBvpEoMdgMPRNyVRf4ddSfcy6AYBDFr5+IZILxT11vRir3dCk5N7gAIDDV5cpMRWGblwXx2NFPXqWQACAlrT3jUeYPA8ALa3yPHpbF1EeAParQevL16pCoHf1e/rmwpMuBukBYF+6nvnLmtKvv/PjRhSj8qJmJdNuGKMHgFZUqUfP+gcAoIBKNwfXptPToweAlrb3rJuu64a5/sykDBvmuPEIgBbwN5v/pl5Zfet4vXJqpko9em3WTWe3I7ae4MYjANCiKt94JLaeEGuXLbIWP7wSAQBKJQI9Bxk6rzB0Y/VethnOBU4vXxy/2mkwiGM8zrVZADhk4WFD35R4FvafQ8UfTGWXKxbvcsa7/0MAAPYtLP2ZeHfP9QNkUfmXsYeByyYAsDuXyyWJ9QNlsVugTwR6OtcuZ9euDA8b+qTOd5dKJpN1zK1BebZEIRuRpxqFbImzaESeLVHIRuTZEoVsCv1AHx7unB2ML+cCu2syszBsMAzXM9ZbLJbsf/d+Xe88f1vvDCXx8/rl6cqdeP3LWf8TP8p5FmUoIrK6utroI7ZKni1RSGlou61/VBHRa2OtQnfWTXhuynO5dNVK1+QC0ysBoBXp9ug7ux2HXQ4AwG6s3uWDTHrU7dFbTw/G+kpuWpUI9PTFxi/yy1gAaDn6Y/RW73Kma9hgMOQf8SxklgnzANCCdp9eyeKVAHAwDVpfvlaV17oBALQ8Aj0AKK75v4xFvTzwj79rdhGAmtFuDwE9egBQHD16YD/oh6KF0KMHAMUR6AFAcQR6AFAcY/SohJFoQAH06AFAcfTooT6+l+A+R48eABTX/B793935QrOLAAAqo0cPAIprfo8eQAvhgkcrItADUA0DwmUI9DhsdAmBQ8YYPQAojkAPAIoj0AOA4gj0AKA4LsY2DdckARwOevQAoDgCPQAojqEb4KhgNA8NQo8eABRHoAcAxTF0AyiLsSBo6NEDgOII9ACgOAWHbvi6CgDF6NEDgOII9ACgOAI9ACiOQA8AiiPQA4DiDhro00GvP5r/1+12u93Z7bJNAEBzHCjQR/3ukelkbmN2qXciFAr5ZMwf3bEJAGiSg8yjj4ojNGHyzoqISDolvaeMImJ3OGdS6bSUbIrdKCLz8/P5nZPJ7CdEIv4vByhDieTXknsnqinDZJ0zbJU81ShkS5xFI/JsiUI2Is+WKGRTHCTQ2+12SaeyG5upDTlVeK5sU3PmzBntn/n5eYvFknv4twcoQ4lcnm/XO0NpQCGlAeVsxIkf3TyLMhQRWV1dbfQRWyXPliikNLTd/up2/fPUa2Otom4XYztM5gqbAIBmqVugN5pkaSUtItHIotlkLNus11EAALWq31o39sHemRH3tIjTF7KLSNkmAKA5DhrojQOB0cK/oYGSZ4o3AQDNwQ+mAEBxBHoAUByBHgAUp+CNRxqBm5kAaF306AFAcQR6AFAcgR4AFEegBwDFcTEWgGrquCauuOqWUxPRowcAxRHoAUBxBHoAUByBHgAUR6AHAMUR6AFAcQR6AFAc8+gBNNO/WvunZhdBffToAUBxBHoAUByBHgAUR6AHAMVxMRbq43If7nP06AFAcQR6AFAcgR4AFNf8MfoH/vF3zS6CIhiJBqCLHj0AKK75PXrcb/jmARwyAj2wH3xcoYUQ6JumJSJFSxQSQGWM0QOA4hTs0dMJBRqH91crokcPAIoj0AOA4hQcugGgYZgFGnr0AKA4Aj0AKI6hm6rwFRiHgGZWL6ygVaZpgT6ZTB79PFuikI3IU41CtsRZNCLPlihkI/JsiUI2RdMCvcViyf37dgPyPKIZtkqerVjI1dXVRh+xVfJsiUI2Is9GR5WdbaxVMEYPAIoj0AOA4gj0AKA4Aj0AKI5ADwCKI9ADgOII9ACgOAI9ACiOQA8Aimv+Wjes7wEADUWPHgAUR6AHAMUR6AFAcQR6AFAcgR4AFEegBwDFEegBQHEEegBQHIEeABRHoAcAxRHoAUBxBHoAUFzzFzUDgPpiqcQy9OgBQHEEegBQHIEeABRHoAcAxRHoAUBxBHoAUByBHgAUR6AHAMUR6AFAcQR6AFAcgR4AFEegBwDFEegBQHEEegBQHIEeABRHoAcAxRHoAUBxjQv06aDX7Xa73f5oww4BANhbwwJ9dHapdyIUCvlkjFAPAE1kyGQyjcg3HfSvnBodMIpE/d7UYGDAKCLz8/P5BF//+tcbcVzct1ZXV8+cOZPfnJ+fp42hvsraWAtp1M3BN1Mbcqr8wXwdzc/PWyyW6nNLJpM1pVcmTwpZvdXV1bJHas1B1Zo5/DxbopD7yHNnG2sVjRq66TCZG5QzAKAmjQr0RpMsraRFJBpZNJuMDToKAGBPjRq6Eftg78yIe1rE6QvZG3UQAMCeGhboxTgQCA00LHcAQJX4wRQAKI5ADwCKI9ADgOII9ACgOAI9ACiOQA8AiiPQA4DiCPQAoDgCPQAojkAPAIoj0AOA4gj0AKA4Aj0AKK5RtxKsrPiegkC9lN1KsIklgapa9FaCkmkFP//5z+/PPCnkYbpva4YTVx5DNwCguOYM3QAADg09egBQHIEeABRHoAcAxTXi5uBRvzc1GBgwpoPekdTZ0Ki9+FEJekemk9mUlqGJwIBRJB30zpoC2YT5/aOXzo7FPtEes/lC34u4xxYLR3nyhPzmTtFRLUMTgVMrucyzOUevusfeLqR58OSV4JWTEvW7x8SXLVg6+KOR6btObTPqd4+9I05vaFQuucdiRdk7fSFH5MVwfPPWpoiIHBP5pPBEdi/H6yU7OX0hR8Sb+k7v0pXsKTt9odGOohqw+UI/yR52sXi/CdNMoZby1SSSDhZO8Lx5+hVtp2POiZlRo0g6+MKVv3nuymsDxqjfm3rKvPTpYGBA/GdHFj8plCh71v6zI4tmX+gnUqjkZ52Wtxe1gz7rC122FxXrxGcsLuQAABPKSURBVPOhV7vKC+mTsaIHnL7QqJRWbNHLX1LlO064rMIGAwObfvfYdqE8+douVEZU91gV254x+3fT7x5bE7lTfta71f9j/RM3fmjUWulZGdMOm2vPxdWbZznvM79SdoYdQxM+uTZS3BL8gyOL/6fsuH95KxnT2pDF+ayYfhAYuHNl4Mqtz3KJjls6vvvSy7mXePqVLZvE2netByluM7nj2kUkeunsWOyZ80Mbb8pL+fosFPhZX+jy+gsDvx4JXjkpeq9ZNp/SzHd41jfxtRm9BCeOD115TXuZistW2qTE5ps4Wbz7scf6r9/4oTEd9I4sbUvy7q61lHtQ/GcvyvWZUa0efjQyfVfL1ybZOt5xyN3ffUVVWtb6Sp45ohoR6Istjvkd+bd3Vj7aSNTv9kfLn86Jvh4T50Ro1JgOvjAyPXbpe6FQaFSil86+bL1+44cS9P70q5Y2R+7jIR188dK56W+8GPJFvKnBgGnW7Q1OnE3dfvLYsYe8Mz+xi0j06rmXXwumXx4QEdlIpcVuFEmvLN3Nb0Yj8SePffKbLRGRdsvQRGBgs+g1/Nlrm/f+LBTqk6jf/fqWbMSkfWjibGrkRzMntL2ikbsnjn3xgbbfb97Jv58i20tXUmcLpXrhgnSfDYXsEvV7X1+LBfzpmVGjfTTkE+/ra+lP/yw43ici6eBMoZbSQe+14CntMzJ1NhSyixao33FOhEYl6B2ZXhy55Aj9RK8ao/6RLbNl6MeBAWP0kntsOXxr1H5SJD37zidy4m4kGt3KVrJEL7nHxBcK2aN+b2R7zBs8b54WXygkfm9ka+vmpWjoJ6HQaHGjjvoLn0DZo5VWbFLMuSciG06nRKJit4tI1K8dSWsBEYdPZvKVHI1k09tOJNe+GQoFsie7OjTxWvaohTaje6yKbU/LfO2EbLdnP2OvugP5j1vv6hfll4+8NGq/c+V67kNY0v/vuZGL/udmRkVE1vMnUl69EvW7X93o+O5LL5tmvamnJWXp75e5lU+Hrrw6YBSJXnJfuzTy7RcnnIGRxU+cz8vYuXPyjT91Wr4weDZ1LbKd3PjaxKj9zpXrsVzVpIMvjPy1/EBEtA/a72uNwX/WG7sjA0YRSd3acDq31xZle/d6iPpHbrVl33JRv/vVjTFvcCIwYFzf+uzJZzfef6hX3lxJDwwYRaTjZEen6+Xsh4RdZL284spfbon68w0yeuns2Id/PvFy9jXypgbPpq6lBu2yMpM7uDf1nd6lG/JS9hN3R9le+19jM9+eCIWMUb83si3Sph2k8EZY8A781ZvpH/7wTiwtyc9yfbNL7uu/75OBksTRS+5AtuqKivodp+ULg4GBzUvusbtac4r63a+tOp0WcQSyPQztI0Hn3VcSxkvbcyto8NCN0+eTMX90t6ftg0Mbkd2e7Wg/9tnvtV7XQ06fr71CPiIiH21vP3o+/7a2j/rMv3j1xsY3/92j7Xd3HsLiNKdW0iKSXkmZbceO2cyplXQ6OBM//uVuy4NbO5q4iEj0f24/9vTTIhKNbAz9+Ce+ZyxOc2qlY3Co7XPjl7stD/7v12c2vv7VR40fbduKznrr0w/7B4tK1Z0ZGrSLpIMzG70/vjLULpsi2c1vf7Xt3q3dzzG9smT25VrfysYzzz+zsZIWEXH6zj8Ze+1nevv8MrIx9O327Ea7xdnzxd+kReTWq++IpeOrX9+IfJCr5Ghke2gi91lh+kEoMPC0ybKRuhWc2egd/PGfW9r1st+ppGKdlmzJgzMbvYODvbnXusNk2UilszWiE4rvBGc2zA89cPKBf8rWhqnd+ULunVZoM7rHKtil7d0JzmycOtXxQPpvoyIi9h8Mte84t/R7yQdt38uWy/jcdx77bOOXIiKfb7xVciIl1WsfDb1gfqCQyee/fdf8fPdDuWe/94f/6uOT37GLyDHnebm57Xz0G77Rruyzph/4zEsr6dLjDvzZk9nj6tr+8L3bvYODX9/WWq9+PUQjG86Htoe0FmgfDb0WCAUGjJIOvrXd9u/6ejfeN501L2nNaHs7+YSjprgVjWwM5dt2e/uQr7ZObXnZXh0PZeNp9tR6NyJ6p59+L/lg4S1m/57tweR7aRGRE8/nH/x2WdVFIxtDg9na7jhpsXz3lFFEpMNkeei7RS9odcrbcytodI9e7KO+iNsfDY3qPms0mTdSaenQfc7xzGP/7YrbLSJyzNkx4xO3PxpyFBK8vZiURXfua1fHyY7OLxXvv72dlD91P7I0d3dxLJvqwZNXBowimyImhym1kpZTKymTo/2dd8RhSr355sbnx9u/9h+ejgfeCqa7JDk94p4WEVl0p3yh0Y7UVtsDJ0Ukndowm4wiWib5vd5/b/7D3m+b5xY/EhkbE5HFF74cevVLn3726OPaIaVo3/TKkvS+ZDRK78a1YNp+amVJel/6UuoXlvhMMG0fMIpIvtBaT8oo6aJz20yJ6SnZ+DS72fcXtv86djX6J18rq8KPfrdh/rpDJJcue9ZPhtYfeObfPyCP9268mep+9F62kk+Ysl27bP0PBM5edY8lRUZGOk52PJArWJF8FRX6XcUVa9qIiOw42QGjcSBw1u/WDmoZmgiYykr93pI8/fTW75/6k40ZnYNm24xJ91gl9NreR+8tSe9LPxx4/H+4x9xuEek42bE5XWhFQxMvGyV6Wx6IaU+LaAMBn6ZFPtrekj89lT2Rp8w7qrfU5q3NzVubIou5KnrgD/7ohPbf06O+W+7AlmPHLrflgYcKm1966MEPf5eWx0Xu3HS7b2oPHrd0fPeEiHywtS3fPGU0PtT+2XvyxXb9ekinNtpF2kxlVZheWZL2tkdOnOrduJZ6zry0kh4Y+GDr3r1k7pwtT4lO0C57uTvyb4TyZ202y8nCboWWvJgUkRH3tNhslpN39MtWdGrSuzEW+7zo1Tn2WP9zueS6gSX/YLbqni7Ug9lklJSIaA071/wefKw/oL2gkXYpaoc73n1ltVfSnnecwBHU8ECfr3yf3nPp0rZS7qFvT4TGjengi9f+5lpwMOATt3/dln/2WWd26CYd9F6Tc7alt4r3/WBr+97m9BWt6VmGrvQuTfz957YTuac7TDKzkjaJ6VRH6q9FOkzbL7+cvHcvOX1LRGRp5QNz+dCNqX37848kH2j+eevTL5TtJXPZQfPjQxOvDWz63f6oT2twOcZ/bltNpaVjZSmZTGbfF5aVW7KUTCZHxkRE5N5KemBAcpEzHfRek5d2tKUOk0Q+EPlC/oH2Z56XsZ+mTpQme+Rx8y9TH5jz26kP/lmWVm6lkp/cuzd3TyQpclw6vjsRChij/hfDv9BGiEREotGo3W7v+JpF3k6KyOatTbm7UvI5oFXrxI6hyaKKlSURbTyh6GS1TOyjodCoZL8YP2cuzuDz3767mdxMikgym15EttbzX5OL2syOY5Xb0fa0zHOFGZoInHrznPeB86FAn6T9Z72//5E2iPGEfK6N3Gj170jNilHu/Hb7k7u5aGZ5v11MT5VWb3R9q+gl6TjZ0flHnRtfyI0H+P7ji++v5gv2g//7X0Zej36v9MtExxPyeaLkkUcfN4rkhm7SQe81ec689KmIpN/f+uze3Ih7TkTk899vb+jWg9Fk3kptb2VHdkSi0aiIdKSWkneTMj0yIiKWT58zL62kT6W2cpd6on5v6mnRUf5ya28Ee/YRi/P82dG+/KB1IZnWkhe8A3/1dODGD425BCd0y2a320tO7bHHtOtF6aD3WqpdHikqjm5gyT54PtvBKtTDRipd9MHq8IVG7engiyPTuQMdl46iQF/h3bezPevV1VFzKLNu7KM7rnhoorPTZoddxGgyL+a/BkUji2aTUdLBVxe3UjvyuRnbceVLjAOBs6krvzJvFL6pRy+9kuw4HwpNDFmcvpDPvPSbU4E/3t5cKnydszvMqdlIKv8x8+m9B21Opy80MWRxPm9een97x1n827Z7b72ZFrE7zNNjV34R206JfHrv8z+QE8+Hzj8pJxxOi/NZS3+/xXZ8aSWdPevYQ4/OXQtmQ306+G7MMH3N/9Npsy8UCk0MWcT5vPnNaW3T57QMTfhy36SLTm3EHxUR46ne/AkaT5nfufmO+ZQx/ebPk2vr0Yg4vj/qa1u8c+fTXJWlbi2aTX0O8/Rfb3yuPbL94Xuv/NOXzbcmFh98PlsxE86Pknd/pVXHE7fufviRlvKjN2fG/tbvdV/RChaaGLJYnE+UFGx3ZRUbnc1mEgqFQtoARdDr3n0YbuvDW09otSGWofNabXz04cbNXPvItRndF1GnNCVtT8t8YsgiWqsoqWrHM4/eu6JV9Tcsn8Vej2pv6rZbI69tOewSfevWY+LMnoqv7Z2320urNx2cublV1Ll/4A+/uXFzLfdA9Kf/n7TdfiOYnT+QXrn3f/4gli9Y6qdjG72njMbnviGx134mkg563f6fvR5r+2afyIkvPnjnf0ZFawy3XllsMxklOrvYdmJoQms1zic22tr168HuMC9uyLTWAtPBmbH/9trY6385bfb5nBZtd/PSp0+Zl2ZnV9vaTOV778HuME/n2/b2h++9Umko40tm4zdujxS/7naHefF/GYrKNvPqWCRadGqhUOj8Y9tbH0j23Lfe3koVvzq5t9hnlm8Unbh91Cdjr/zmQfPTIsYvt32y8ctsUf/zTDawvOgOaAeafsJp0aoh5Du+tf1ReZmL3n15O9tzjbXWHIfQoxcRsY/6nIsz2Y3C1yLL0EQgO0Lni7hzX5WdvpBdRAZesP312IiW9JhzYsAoIvbR508s/nf9A0TcM/39M+6xpMii+8ST4vyLPsmOd9gd5rHZqK9bbr7idr8iIvLkUzLukLGIY1QkIiK/jMRs7SKOn4ikRLoc5puvLUp+6GbaMjQRGOjq7vj1u9nPfzn2gXyyODIm8kVx/uj70b+9eaz9LxztY68tytsiIrER97RYhs475U3Tld6lEa1U005f6NUO/9mR5Cdvuxez/YafvXDzxJfzY6NaUU+Zyk7NG5wIDAwEJoJet3tMq7orf7404h4REbk5dkdEHKFRn3MxsJitMnnWF7KL2CciZ0ey3dBjzonR7//ihZsn/vj7IkEREePonz66eHNEq/mOkx257s2zvtBle/SSeyz7WlmGJgKmWfdsdKBkuKHo23rRGIw9V7EpEYlGFp2O/Ndru8M8NrsZCvhyX53FMjQR+NLsUj5Arm99Yvkzu4jYRydS3pHppCy6p+VYodXk28zOY+kranvZzI32gM+v1ePiSPGQX1vveRnzBicCp2zGZ1Mzbnd+6sWY1+9MOn/kk/yAzglxithHi6rX6fN1zxTKkZybExHJV1Fu1s0nIiPuRacvNNvhPzuyOD0yps3rGTCKyOjM+Qvu7DBNMiYS80e/P2hqt23lj2uzyUwwaF60tedH400nzdN/vyVt39Oph2w15kvh9PlkLOL4iURm8q9I5MvOxZtbNil6NePBUy+LfHYrO6onJ54P/WjHyz2gZZ5/rPDOPvZY/2BR83CLL+SQ5OLbIm9n39CP9Q/qlC00ao/6x4pO7emvPvjK30elzy4i9u/ZZGwsOPhy7tUZExE5bpE22wmRO8UDXCeelIdMIiJd3cffzb3n5Zjc1Qpos+WKaumdGDWKiNj/bdvYP/5SpPyjsvDu07Z12nPUV1Qzhau4RwtLIACA4vjBFAAojkAPAIoj0AOA4gj0AKA4Aj0AKI5Aj6MmEegxaIbDzS4LoAQCPY6URKCnc3YwnslkMpkF6esJJPbeB0BlBHocJYk3ZmX8htcqIiKui/HLp7WHyzr5iUBPz/Bwj8FgGA4X/y8i4eFdU+p8WSg8wEcKFEagx1ESX4vYuqy5LavVZbWKJALnsp38Bc/UXHY4JxLrvpHJZCZdxf8nAj1Xu/NfB7LBvOjZ8nzC1y/YFrTktgvXGSiCqgj0OPKs3uUbcs5gMBj6piS2rvW8HYOn8x8I+f/ja5HIhU5DadL8szvz6ex2TPUZDAbDsExqnxmAigj0OEo6ux25SF4QHjZ0rl3WeuJ75uDReuiZTCaz7LWWPLUzH6t3OZPJxMe1cM+1X6iKQI+jxHp6UC6cyw6Xh4fzQ+eefpeIhOemKu/e2e2YuhpIiDb4rhO4S/PJJrJ6lzOZBY/s/IgB1ECgx5Fi9S4v2HKjL7Hx+LLXKq5+jzbAMiceiazFq9m784JtoXwsZkc+Vu/ygvQZcge7UfYNAFAFq1cCgOLo0QOA4gj0AKA4Aj0AKI5ADwCKI9ADgOII9ACgOAI9ACiOQA9AFYXVSOu1HGk+x9Ze3pRAD0AN4eH8vQwy8cHZc/UIzfG17Pqm5SsntRYCPQAlhOeKlrGwepeXvVaR8HBPT4/BMBwOD/fkVkEaDouEh7P3KSjcuECv455Yj2nLZrR2h55AD0AJifVY9l4GuZvPaME5Yruc0VuDOnufggW5Gkjkb1VQ/kUgvibj8Uwmk7kh11s51BPoAajA2mXLrj/qmixei9rR3ambPnufgs5uWYvH10Tbsp4elOJl81yT2SGb+FqsoaVvMAI9ACW4+m0XCt3x3da0jq9FtH+y66DG16S7s7NbZt9IiHYvy6IPhuw4j4iIFN36rPX862YXAADqwjWZkWGDwSAiIg5tjev8PQlc/ba+TsMFcTgctn4REUfsqsHQJ+JZyFitcmOwp9NwQdutENCt3hvdPblUk4d9PnXEMsUA7j/h4Z71i609k6YWDN0AgOLo0QOA4ujRA4DiCPQAoDgCPQAojkAPAIr7/wFl1vWRj3HiYwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">## Torta
+### Género
+p2_colores_2 = brewer.pal(n = 9, &quot;YlGnBu&quot;)[4:9]
+
+p2_g &lt;- alumnos %&gt;% 
+  group_by(genero) %&gt;%
+  summarise(n = n()) %&gt;%
+  mutate(prop = n / sum(n) *100) %&gt;%
+  mutate(ypos = 37*cumsum(prop)- 5*prop )
+
+ggplot(p2_g, aes(x=&quot;&quot;, y=n, fill=forcats::fct_rev(factor(genero)))) +
+  geom_col(position = position_stack()) +
+  scale_fill_manual(values=p2_colores_2) +
+  xlab(&quot;&quot;) + ylab(&quot;&quot;) +
+  labs(title=&quot;Proporción de género&quot;, fill=&quot;Género&quot;, caption=&quot;Grupo 5&quot;) +
+  coord_polar(&quot;y&quot;, start=0) +
+  geom_text(aes(x=1.6,y = c(1250,3750), label = n), color = &quot;black&quot;, size=4.5) +
+  theme_void()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">### Estrato
+p2_e &lt;- alumnos %&gt;% 
+  group_by(Estrato) %&gt;%
+  summarise(n = n()) %&gt;%
+  mutate(prop = n / sum(n) *100) %&gt;%
+  mutate(ypos = 46*cumsum(prop)- 12*prop )
+
+ggplot(p2_e, aes(x=&quot;&quot;, y=n, fill=forcats::fct_rev(factor(Estrato)))) +
+  geom_col(position = position_stack()) +
+  scale_fill_manual(values=p2_colores) +
+  xlab(&quot;&quot;) + ylab(&quot;&quot;) +
+  labs(title=&quot;Proporción de estrato&quot;, fill=&quot;Estrato&quot;, caption=&quot;Grupo 5&quot;) +
+  coord_polar(&quot;y&quot;, start=0) +
+  geom_text(aes(x=1.6,y = ypos, label = n), color = &quot;black&quot;, size=4.2) +
+  theme_void()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">### Carrera
+colourCount = length(unique(alumnos$carrera))
+p2_colores_3 = colorRampPalette(brewer.pal(9, &quot;Set1&quot;))
+
+p2_c &lt;- alumnos %&gt;% 
+  group_by(carrera) %&gt;%
+  summarise(n = n()) %&gt;%
+  mutate(prop = n / sum(n) *100) %&gt;%
+  mutate(ypos = 50*cumsum(prop)- 20*prop )
+
+ggplot(p2_c, aes(x=&quot;&quot;, y=n, fill=forcats::fct_rev(factor(carrera)))) +
+  geom_col(position = position_stack()) +
+  scale_fill_manual(values=p2_colores_3(colourCount)) +
+  xlab(&quot;&quot;) + ylab(&quot;&quot;) +
+  labs(title=&quot;Proporción de carrera&quot;, fill=&quot;Carrera&quot;, caption=&quot;Grupo 5&quot;) +
+  coord_polar(&quot;y&quot;, start=0) +
+  geom_text(aes(x=1.6,y = ypos, label = n), color = &quot;black&quot;, size=4.2) +
+  theme_void()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r"># Punto 3: Carrera y género
+p3_al &lt;- alumnos %&gt;% count(carrera,genero) %&gt;% group_by(carrera,genero)
+p3_ta = cbind(p3_al)
+p3_ta
+</code></pre>
+
+<pre><code>## # A tibble: 14 x 3
+## # Groups:   carrera, genero [14]
+##    carrera        genero     n
+##    &lt;fct&gt;          &lt;fct&gt;  &lt;int&gt;
+##  1 ADMINISTRACION M        390
+##  2 ARQUITECTURA   M        421
+##  3 BIOQUIMICA     M        374
+##  4 CIVIL          M        378
+##  5 ELECTRICA      M        407
+##  6 ELECTRONICA    M        403
+##  7 INDUSTRIAL     F        188
+##  8 INDUSTRIAL     M        191
+##  9 INFORMATICA    F        354
+## 10 MECANICA       F        336
+## 11 MECATRONICA    F        345
+## 12 QUIMICA        F        415
+## 13 SISTEMAS       F        397
+## 14 TIC            F        401
+</code></pre>
+
+<pre><code class="r"># Punto 4: Freq rel carrera y estrato
+p4_al &lt;- alumnos %&gt;% group_by(carrera, Estrato) %&gt;% summarise(n = n()) %&gt;%  mutate(freq=n/sum(n)) %&gt;%
+  select(carrera,Estrato,freq) %&gt;% pivot_wider(names_from = Estrato, values_from = freq)
+</code></pre>
+
+<pre><code>## `summarise()` has grouped output by &#39;carrera&#39;. You can override using the `.groups` argument.
+</code></pre>
+
+<pre><code class="r">p4_ta = cbind(p4_al)
+p4_ta
+</code></pre>
+
+<pre><code>## # A tibble: 13 x 7
+## # Groups:   carrera [13]
+##    carrera          `1`   `2`   `3`   `4`   `5`   `6`
+##    &lt;fct&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 ADMINISTRACION 0.177 0.159 0.151 0.177 0.177 0.159
+##  2 ARQUITECTURA   0.145 0.183 0.143 0.202 0.169 0.159
+##  3 BIOQUIMICA     0.136 0.171 0.152 0.144 0.201 0.195
+##  4 CIVIL          0.143 0.153 0.190 0.177 0.172 0.164
+##  5 ELECTRICA      0.143 0.170 0.216 0.182 0.143 0.147
+##  6 ELECTRONICA    0.186 0.161 0.174 0.166 0.176 0.136
+##  7 INDUSTRIAL     0.158 0.148 0.177 0.187 0.142 0.187
+##  8 INFORMATICA    0.164 0.141 0.178 0.167 0.186 0.164
+##  9 MECANICA       0.152 0.113 0.179 0.167 0.173 0.217
+## 10 MECATRONICA    0.174 0.171 0.174 0.157 0.157 0.168
+## 11 QUIMICA        0.157 0.181 0.181 0.193 0.149 0.140
+## 12 SISTEMAS       0.151 0.184 0.161 0.161 0.186 0.156
+## 13 TIC            0.155 0.155 0.162 0.162 0.182 0.185
+</code></pre>
+
+<pre><code class="r"># Punto 5: Gráficos edad
+## Barras
+p5_alumnos &lt;- alumnos %&gt;% group_by(carrera,edad) %&gt;% count(carrera)
+
+p5_colores = brewer.pal(n = 9, &quot;YlGnBu&quot;)[1:9]
+
+ggplot(p5_alumnos, aes(x=carrera, y=n, fill=forcats::fct_rev(factor(edad)))) +
+  scale_fill_manual(values=p5_colores) +
+  geom_col(position = position_stack()) +
+  xlab(&quot;Carreras&quot;) + ylab(&quot;Cantidad de estudiantes&quot;) + 
+  labs(title=&quot;Cantidad de estudiantes por Edad&quot;, fill=&quot;Edad&quot;, caption=&quot;Grupo 5&quot;) +
+  theme_light()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">## Torta
+p5_e &lt;- alumnos %&gt;% 
+  group_by(edad) %&gt;%
+  summarise(n = n()) %&gt;%
+  mutate(prop = n / sum(n) *100) %&gt;%
+  mutate(ypos = 50*cumsum(prop)- 20*prop )
+
+ggplot(p5_e, aes(x=&quot;&quot;, y=n, fill=forcats::fct_rev(factor(edad)))) +
+  geom_col(position = position_stack()) +
+  scale_fill_manual(values=p5_colores) +
+  xlab(&quot;&quot;) + ylab(&quot;&quot;) +
+  labs(title=&quot;Proporción de edad&quot;, fill=&quot;Edad&quot;, caption=&quot;Grupo 5&quot;) +
+  coord_polar(&quot;y&quot;, start=0) +
+  geom_text(aes(x=1.6, y = ypos, label = c(&quot;&quot;,&quot;&quot;,310,1187,1891,1204,339,&quot;&quot;,&quot;&quot;)), color = &quot;black&quot;, size=4.2) +
+  theme_void()
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAulBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZrYIHVgdkcAiXqglNJQ6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZmY6ZrY6kJA6kLY6kNtBtsRmAABmADpmAGZmOgBmOpBmZmZmZrZmkNtmtv9/zbuQOgCQOjqQOmaQkDqQkGaQtpCQ29uQ2/+2ZgC2Zjq2Zma2tma2tv+2///H6bTbkDrbkGbbtmbb/7bb///t+LH/tmb/25D//7b//9n//9v///8m2D1QAAAACXBIWXMAAAsSAAALEgHS3X78AAATDklEQVR4nO3dD3vixrXHcdmt62zipOk2DXE2e1vwtk3ttHW4t15Brff/tq7mj4wtJBhJZ+acmfP7PonBQHjC+Vh/8GpR1SCVVdz/A4gnwCsN8EoDvNIArzTAKw3wSgO80qrdTdV2cR/06N03j+brzbp/x/7HkSd4e8fow1DqKmdZB8rbHo7cAZ9dHv757hhzSoDPrQP87g8/XT62K/522X/+9PequjbrdPNdd0e1tqt6f+M3f6uqlXuOuqp+14rub6vLR3eLv+rvaC/Ms/nvkIi6Vb2hXbdga3P1+e7ycX+78t91d7SPbP95uXFlLsxTmFu2F/dmpbG9ejK3+Kv+DvtfuIvtlC0Kitlh52739b1dotvVsV3xb6/9d+aO2ok6++5G9zNj7zO3uDv8w8xVf4e55e13iD+/xDdOy+C06ha+vvo/9525Y/sCXx9u9P/p1sPfvLw78Ff9Hfbbw3dIRG/hh5d4/xPRvFniD/Cvlvjm8FSv7mhXDljipfUW/mUbbzfQ3ebc39ECvtrGH+BfbeP9Lf6qv8PsCjxgGy+st/B+l/357n/sLnu3A+/u6O3Vv8CbW/7k9uo7V3/V3fF8V1Xfmx8F9zAkosFf2S59V4/kB3ilAV5p+NM5pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmn5wtdVd267S3cGjcvH8/8R6soW3p4b67q7sCe8cSdMQkFlC2/yJ8Ux58Z6j1NcTStr+HZR9xeAn1rG8Lsbe9Ire0F7bjO/3+BXKfvbqsCNSMbwzavzl5qdu+8/EcH7/QbzA9D62xPlXtM8s6Cyhu/OZO8u9h8Id+sN/sPFz+Zcix8OZ9grqGzh/RlL/YVZ6EkXS/dk9rSKZe4+ZAvfbN0pjP1Fu1km3BD73YeXEy0DXk2OGku8vux+ww7beE0dVu4G/Pluhb16Jfn9BryPR+UFeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JVWNvyvrs9tX3zVxf0/JaNC4X9901v4L23c/4fclQb/61BD8F8q9y8HfpD8LLxa/0LgT6gHwevzLwD+NPokeEX4OcOfF58Dr8Q+W/hg9T78eXcV9nnCT1GfB1+8fY7wE9nnwpeNnx/8ZPYl8OXa5wY/g30hfKH0WcHPUl8OXyR9NvBz0UngC6TPBH4JOwl8cfRZwC9jJ4IvjD4D+KXsZPBF0YuH32w2cuDfvXvHPQ+qhMNvNtLgS7EXDb/xUcIvdy+DXjL8Rix8AfJy4TevkgH/7nXc41maVPjNRjh87vJC4TcbSnka+Hf9uIe0KJHwfXah8FnTC4Q/Zl8qTwI/4J6zvDz4Qffli3wc+HzppcEPsxMs8kvhR9yzlRcGP+ouFz5TelHw4+wL5ZfDn3DPU14S/En3RfKR4XOkFwR/xp0V/ox7hvRy4M+5L5FPAJ+bvBT48+yc8AHuudELgQ9xXyCfBj4reRnwYe5s8IHuWcmLgA90lw+fkbwA+FD2BfLL4MPdM5Lnh5/gTgAfd4HPSJ4dfoo7D/wk92zkueEnuc+WTwmfiTwv/ET2PODzkGeFn+w+V34J/GT3POQ54We45wGfgzwj/Bz3mfIL4Oe45yDPBz/PPRN4+fJs8DPd58nPh5/pLp+eC362ezbwwuWZ4Oe7z5KfDb/AXbg8D/wS93zgRcuzwC9ynyM/F36Zu2h5wMeEFyzPAb/QfYb8TPjF7oLlGeAXu0+X54MXK58ensA9ETyFO+C7KNwnyzPCS5VPDU/jngSexl2qfGJ4Ivep8qzwMuXTwpO5T1/kv2BzlymfFJ7OffoiD/i3AT6+u0j5lPCU7hPlmeEFyieEp3WPDE/rLlA+HTyx+zR5dnhx8sngyd2jwpO7FwW/++ax/XJTVeum2d9WV0/mxue79eCDtcNLk18AX1eXj83+x/tm9/W94d5em1u31SA8vfsk+YnwEdylyc+Hf7j4uV3ia6P9sN5/ePQrgD/8NAQfwz0efBR3YfKLV/Vt7VK/e/9kF/7nT/8YXNUDXpo8Afzz3aqprxz8djW4jY/iPkUe8P2Ww+9vV+1Vt8S3F0PwkdwnyHt4XndR8gR79Qbab+O3lWnVfyDg5ckvhXfudnXv9uoHlvho7uHygO+3FN4t4+uT7+Mzg4/oLkg+wW/uIroHy4uBFyMfHz6qewT4uO6ATyv/+XPwu7nI8FLko8NHdieHj+2eSL5u97wu7pu3+1yvr2cPHyavD/7aX+GCj+5ODB/fPY28h99Wv/1pbd56XXfXuyLDx3cPk9cH367qr57aN9y7m/Xu/dP+w6O7/vIAwCd3TyLvlvjtyvzRqTlm4uLeX++KC5/CPUheNXx9+bj/EfD87inkHXy7et/frtvr9cW9u/7ygKjwadxD5PXBu9+kb6uL36/3t9Xvbv31lwcAnsFdwm9xYsKncg+QB3w/wHO4C5CPCJ/O/bw84Pupgpfjzi8fDz6l+1n5APi07oDXCh9Z/r+9jh4QDT6t+zl5wPcDPJN7ZHk2+NTuZ+QB3w/wgKcsvftC+PTuceWZ4Bncz8kD3rS/rS4fn++qi3vAs7lzwG/XzXa1/3NT1BJ/Ul4ifEz58VV9vd7dVFdPUeB53BfA87izwO8/PtWrZveXkuBPyYuEjyg/Bm/+WnNbvQI8o3t6ePs329sNfb2OAc/lfkpeJnw8+RH4B/PxBe1e/XWUnbvc4Pnck8MfKgt+XF4ofDR5DnhG91nwnO6Ajy2vDf5sgGd1jyb/udfRA+jhWd1H5T/LXOABzwbP7A74yPJi4SPJp4fndp8Iz80O+MjyI/Dc6u8Arxb+WN5/OHR3HojLw8dIhjcCbw/EsB89TA3PrW7KHN6eAOLVeSC27iNDa3cR2Ai8PRCjeb6j//N4bnRbMDy3ua03QXcCCH9hPxXc/kmq+RGY0Piqvm7t//QR8ALqz/DVqv6wxG+vj2Z9qlH4/cen3fv/FAo/IJ8p/MuHQ09c4EfhzerD7DFQH4jBLe4LhOcW9/WH+Ap+9/V9U5tN/rQt/Ci8f+o9+RLPLd5VCnx3ypfm4ejsD6cbgX9w55HQBS/VPWSJf/40bU2f+n08t/dLpcCbT68yn0U8dROvFv5IfgCe2/sQqYEL8Erhz6YXnlv7VaQGrv7rP3pAqfB9edHwEeQBPwbPbf0mUgRbWnhu7DcBHvCmHjw3dS9KBZti+A3gAX8Ezw3dj1LBNgLffSIG8d+d46buBfgjeHsgRr1qfqH9KBRu6V7j8NzOR1Eq2MZX9fW6aZ7/+kgJzw19FOCP4fcfn9oVPu2qntv5qDF4bubjCBVcY/BRPhGD2/m4YXhu5aEIGWwj8C+fiAF4IREy2Ebgu0/EoD3Klpt5IMAf7dz5CoffDMBzGw9GyGBLCc9tPNgBXvQCD3jylMKfTR88N/FwdAyBFQ+/0Qnfn8LRA9TBcwuPRMcwjHH0gPLhN4DfAF6qe87wHKZhAR7w3L7jkTkMa/ib7YEY9osG+A3gO3h7IIb9ogueW/dEZA7DGod7zIEYpJ9XzyEaGOAP8OZADNq/Js0hGpqH58Y9FZnDsEZ3uz0Qw3wBvJDIHIY1/M3uI9TMF03w3LYnI3MY1vA32wMxHmg/A4cDNDjA91MCv2nhuWlPR+YwrHH0AMALicxhWOPoAVrgN19xy56JzCEwNfDcsOcicwhMCfwPbdy0pyNzcP3Q6+gBKuC7V8+NeyoyBxfgD+yy6ckcXIDvT0CqPZmDSzn8kbpcezIHl2r4EXaZ9mQOLsXwp9gF2pM5uEbg/Tlptuti4c+yS6Mnc3CNwLtz0jxUhcIHqQujJ3NwjcA35uCb/b+LXOLD1UXRkzm4RuHtETgFwk9kl2NP5uAag3cfhVIc/Bx2IfZkDq4ReH8OhMLgZ7NLsCdzcI3A+3PSkMIzyy9TZ7enY3CNwB8qA55CnZeejsGlAp6MnZGejsGlAJ6UnY2ejiGw3OHJ2Zns6RhcZ58/a/g46iz2dAyulPCJ5WOqp7cnZLAVCx+fPa09IYOtUPhE7AntCRlsRcKnZE9lT8hgKw8+uXoaekIG28jzxzknTanqKegJGWwjz9+dk+aB8BMxEsAzusemJ2SwjT9/vf7fe+ITFUSW52W3ZeM+Dr//+PRLVvDc5l2Zw5sDMTJa4rm135YxvD0Qg3wbHwme23moXOG7c9JkcKZJbuKx8oQ/JByem/dUgD+kiN0k1z1neG7VsKTCn00oPLfnlETCf9nr6AEi4bkpJwd4lew2We4ZwnMDzk8z/FJ5bruFAV6juk2Kez7w3GJ0CYffrs3RGMS/sm1mynNbUScY3nwYRmtPeWoSF9hdzO5j8PbDMAz8NTs8t1C0RMJ3q/rffEcNP1GeWyduQuGbhvpADBPU38TkfhK+/Yf4QAwT1HvJg6c/EMMG936i4Lt44LkpUpfcXSY8NwNL5cOfkecGYCwl/NnSwnOPnj0x7knhuacuozTwX/U6ekAE+BF57oHLSRU897BlFX9NLwOee84CKxK+gXpIZcNzT1d2MYbvYobnHqz0YgzfNQrvfld/9RQFvgF7WFGGbxuDN0fg1KuWPxo890xzKMrsXSPw9giciPDcE82kKLN3nVrVN9tqFWcbD/mw4szedgp+2y7x9EfguLhHmkVxRu86CR/jYMsu7qHmUKTR207B2085BDxbkSbv4nkfb+Ieq/xiTd4GeLHFGryLDx7yZ4o2+LAAz1S0ubu+6HX0AMAzFW3uLkZ4yJ8q3thdgBdavLG7AC+zeFP3ccJDfrSIQ/exwkN+rJhDd43Cm9/Vm4+wBjxDMWfuG4M3B2K0/TPa7+pd3BMWWtSZu0bg7YEY9lQFgE9f1JH7Tq3qzQIfGR7yQ8Uduesk/O67yDt3DeQHijxx10n4dk0P+PRFnrjrJLz5NzY85PvFHriL9328jXvQ0oo+cBvgpRV93i4B8JB/XfxxB5YAHvKvSjDusACftATTDiwFPORfSjHtsACfshTDDiwJPORdSWYdWBp4yNvSzDqsRPCQ/0GWezJ4yMtyB3y6Uk06rGTw6uWTDTqsdPDK5dPNOayE8KrlE445rJTwiuVTTjkswKco5ZADSwqvVT7pjANLC69UPu2Mw0oMr1I+8YjDSg2vUD71hMMCfOxSDziw5PDa5JPPN7D08Mrk0883LAZ4VfIM4w2LA16RPMd0wwJ8zDiGGxgLvBZ5ltkGxgOvQ55ntIExwWuQZ5psYFzw5ctzDTYwNvjC5dnGGhoffNHyfFMNjRG+YHnGoYbGCV+sPOdMQ2OFL1SedaSh8cIXSc880cC44cuT5x5oYOzwpclzjzM0fviy5LmHGZwA+JLouScZngj4YuS55zghGfCFyHNPcUpC4IuQ557hpKTA50/PPb+JyYHPnJ57eFOTBJ+xPPfkpicKPld67qnNSRh8lvLcM5uVNPj85LkHNjNx8LnJc49rbvLgs6LnHtX8JMLnQ889pwXJhM9DnntIixIKnwE994AWJhZeuDz3dBYnF14yPfdkCJIML1WeeywkiYZvRNpzj4Qm6fDi6LnHQZV8eFH03KOgKwd4MfTcY6AsD3gR9NwjoC0XeHZ67pdPXT7wnPTcrzxCOcEz0XO/6DjlBd8kt+d+udHKDr5JaM/9QmOWI3yTxJ77JUYuU/gmsj33i4tfvvBNNHvul5WkrOGbCPbcLyhVucO7oD65MuBdUJ9QSfAukAdVHrwP1qcrFh6dDvBKA7zSAK80wCsN8EoDvNIArzTAKw3wSgO80gCvNMArDfBKA7zSAK80wCsN8EoDvNKyhN9989h+uakuDxf+RhRajvC1od7/eN9sr572t2tz4W9EwWUI/3Dxc7tw794/NfsPj/ai/RlwN6LgMoR3a3W/xHfwWNVPLFv4Zn9btat4u6q/APzksoXffX3f1O1mvd25+/4T4CeXLXx91a3jzaa+AfzEsoX3S7zd1F93N6LgsoVv379VZtveXph3c4CfWJbwaHmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYBXGuCVBnilAV5pgFca4JUGeKUBXmmAVxrglQZ4pQFeaYDPrd1NVa2G73q+syfmCgrwmWVOtPf8aZh3/+fw5wF8ZtVuaa+/vfzXqtmu6z/eXD62S7o99167MnDn4AsI8Jm1XZtzLK7qa/Mj0MJfPdWrbXvN/Dy0t+z+Evg8gM+s2gm3Fw6+tf7ul/v2y6u7QwJ8ZtkTKT94+Ie1XfK7Jd6sDdaBzwP43Nrfmr36Vr298u26/rY6bOPby+vQpwF83gWv2vsBPu8Aj6b1/zOn7+9kZ3UxAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r"># Punto 6: Gráficas var. continuas
+## Promedio
+### Histograma
+p6_alumnos &lt;- alumnos %&gt;% select(promedio,peso,altura,genero)
+
+p6_breaks_p &lt;- pretty(range(p6_alumnos$promedio), n=nclass.Sturges((p6_alumnos$promedio)), min.n=1)
+
+ggplot(p6_alumnos, aes(x=promedio)) +
+  geom_histogram(breaks=p6_breaks_p, fill=&quot;#4DD9EA&quot;, color=&quot;#1D91C0&quot;) +
+  xlab(&quot;Promedio&quot;) + ylab(&quot;Cantidad de estudiantes&quot;) +
+  labs(title=&quot;Histograma de promedio&quot;, caption=&quot;Grupo 5&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAA7VBMVEUAAAAAADoAAGYAOmYAOpAAZmYAZpAAZrYdkcAzMzM6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZmY6ZrY6kJA6kLY6kNtNTU1NTY5Nbm5NbqtNjshN2epmAABmADpmAGZmOgBmZmZmZrZmkJBmkNtmtttmtv9ujshuq+SOTU2Ojk2OyP+QOgCQOjqQOmaQkGaQ2/+rbk2rbo6r5P+2ZgC2Zjq2tma2/7a2///Ijk3Ijm7Ijo7IyP/I///bkDrbtmbb25Db/7bb/9vb///kq27kq47k///r6+v/tmb/yI7/25D//7b//8j//9v//+T///8CMgNiAAAACXBIWXMAAAsSAAALEgHS3X78AAAO7UlEQVR4nO3dDVvbyBWGYUFpCSTdpO1CNzQf/fKS4mydQhuSbbxpgdSYGP3/n9MZSdjGi6WRNEcz1nnea9fk8ljHh7kZSQhjkpSoTBK6ARImwCsN8EoDvNIArzTAK40r/PTJeX6b/6NFbl6Omm3V+pnJUmrDr95VO43hmzwZWRfglabRrn6SJFujmxfmJp3u21v74VfDwfTp6+1zM5jsprPhn/eTXXP3bprm92Qx//ylITTbbudfNbO3f7eD2ZZ5reUti8flW9lnLp6OtI4z/H5is23h7eqb7FxYiJsXg3SyfW4/jJPBdH+Q37M1mg13Lm5emAc9HhX32CrZ4+yg+bBzYe+ZDe3WB/Mtt8+XtiweV2xlnzl/iNhsKEqTFW+nv7grw385Ml8G1s1YZQ8291izu//T+Z46e1y+dot7svHxrt2yuHdpy+Xq2VZLG5J2abSrN3vgZJDdZU2M0Dj/kD3I7hu27sHn99gq44LQ7j62FvCTnc+LWsvw+ePGc/jiIVKToSlNv52bZDv91RVv7zFrd2Xd5vdkWy1WfJG7Fb+otbLi723FiveWJvBW0sJb0PvHeLtuzSH47N6KL+6xVZaO8QVqfkQfLJ0vLG1ZPI5jvECan9UbmWSwdFZfnHebe5Nv7+2wi3vyMvvJ7/Kz+uLkfDb8Y5IcpHcHiazs4iBRPC7firN6n/F3ybbZLpgjdqD4gS92/g22BD5QPK34cdJwFwx8oPDTOaUBXmmAVxrglcYV/n9t076CQKkom5L+/ICPtCng5UtF2RTw8qWibAp4+VJRNgW8fKkomwJevlSUTQEvXyrKpoCXLxVlU8DLl4qyKeDlS0XZFPDypaJsCnj5UlE2Bbx8qSibAl6+VJRNAS9fKsqmgJcvFWVTwMuXirIp4OVLRdkU8PKlomwKeIlSj0oTqCmxUsDP8+gPJQEe+E6bEisF/DzAAw888MADH6IpsVLAzwM88MADDzzwIZoSKwX8PMADDzzwwAMfoimxUsDPAzzwwAMPPPAhmhIrBfw8wAMPPPDAAx+iKbFSwM8DPPDAAw888CGaEisF/DzA14TvS8rhQ3fXYVjxrHjggQe+06bESgE/D/DAAw888MCHaEqsFPDzlMO3eIecSD4/h0rA/xy+bLBifxDJ5+dQCXjggQceeOCBBx544L320H0p4IEHHnjggQceeOCBB95vD92XAh544IEHHnjggQceeOD99tB9KeCBBx544IEHHnjggQfebw/dlwIeeOCBBx544IEHHnjg/fbQfSnggQceeOCBBx544IEH3m8P3ZcCHnjggQceeM3wX98cHqW37+5ugNcCf3mSXp9cH6cf8hvgNcEfXZ2m18fZTZru7e05HhGiTxv40L17zZpd/Xfff7TmH3P4lBWvYsWbFIv9CnhN8GZX/4FjvEL4xQk9Z/Wq4B+KTA/dlwIeeOCBBx544IEHHnjg/fbQfSnggQceeOCBBx544IEH3m8P3ZcCHnjggQceeOCBBx544P320H0p4IEHHnjggQceeOCBB95vD92XAh544IEHHnjggQceeOD99tB9KeCBBx544IEHHnjggQfebw/dlwIe+Nrw5fH26QEvUaoNfPmot08PeIlSwAMPPPDAAw888MADD7zfHrovBTzwwPcrFRfYxOBDf941078V30KPFQ888MAD778HiVLAV1QCHnjgNcNPdm9eJAPgtcHP3o7Gu9NnF8Arg795dX52YG6AVwY/++H9yxErXh98Okl2/vNyxDFeHXx5ZHqQKAV8RaVVeHNO/9e3rHh18LPh4GzAMV4fvD2rH3BWrw8+W/GTHVa8Nnh7jE+21y144PsLXx6ZHiRKAV9RaQU+O7xzjNcGPxsmWTjGK4MvW+zA9xo+HdsVv/bsTqYHiVLAV1RaXfHrr9MD32t4dvU64dOzta++Ab7P8Pb6Dcd4hfAVkelBohTwFZVW4Tmr1wlvzurPBpNdVrw6+FfnY15sqRB+9nY02QVeH3w62fnvMDlgV68OvjwyPUiUAr6i0j34m1fv+T5eIzwrXil8ft2OFa8OPs2v1fN9vD54XnqlFH42tCuel16pg88O82vdge8vfHlkepAoBXxFpRV4fh6vFD7LhEu2OuE5q1cKP30CvDb4/BjPrl4dfEVkepAoBXxFpdUVz5U7jfD80qRS+HuL/fbd4fMv5uYozW6A7zX80nvZXp6Y/66P0w/5DfC9hl96L9sf/2ZW/NVpen2c3aTp3t7emiNAhAkFH/rzrpmH3svWLPLr44+ndzfZsMwXn0QpVnxFpRX4pfey/fHT3WK/Ar738EvvZWuO8dcc49XAL8JZvSp43stWJzzvZasUnveyVQrPe9kqhee9bLXCl0emB4lSwFdUAh544IEHXh08F3B0wnMBRyk8F3CUwnMBRyk8F3C0wpdHpgeJUsBXVLoHz3vgKIVPeQ8crfD8Jo1SeN4DRyk874GjFb48Mj1IlAK+ohLwwAMPPPC64LmAoxQ+5QKOVngu4CiF5wKOUngu4GiFL49MDxKlgK+otArPnxjVCc+fGNUKz58Y1QnPnxhVCs+fGNUKXx6ZHiRKAV9R6R481+qVwqdcq9cKz7V6pfBcq1cKz7V6rfDlkelBohTwFZXuwd+8es8fHNQIz4pXC89ZvUp4/hiRUviyxQ58r+ErXoixOQkFH/rzrpnlF2KUPU7mi0+iFCu+otIqPLt6nfDZD2mA1wd/wwUcnfAVkelBohTwFZVW4Xl5tU74DXp59aPyBIIvT5ip6tnLq1v5CG3qc3/Ay6vXBPhWlVaP8Zvz8mrgW1VahS+PTA/NAnyrSsD73HRj4bPXWp6tPakHvq/wZ9nRfb28TA/NAnyrSvfgi9N5zuqlRsNMlcMrcH4AXiV8OrYvupoN+XZOaDTMVLmc1U/spfr1P5mV6aFZgG9VaQW+IjI9NAvwrSoB73NT4Gv10CzAt6oEvM9Nga/VQ7MA36oS8D43Bb5WD80CfKtKwPvcFPhaPTQL8K0qAe9zU+Br9dAswLeqBLzPTYGv1UOzAN+qEvA+NwW+Vg/NAnyrSsD73BT4Wj00C/CtKgHvc1Pga/XQLMC3qgS8z02Br9VDswDfqhLwPjcFvlYPzQJ8q0rA+9wU+Fo9NAvwrSoB73NT4Gv10CzAt6oEvM9Nga/VQ7MA36oS8D43Bb5WD80CfKtK6+Fv3x0eLd0A72E0zFTVhL8+Tj+empsPJ9kN8B5Gw0xV7V397T8+XZ2aL4DsJk339vYcjwidZBPhQ8/Zz/Ig/Nc3R2bNG/OPOXzKim87Gmaq6p/cFYv9CnhPo2Gmqib85Ynh5hjvdTTMVNU/q3/+hbN6r6Nhporv491GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92iYqQLebRR44H2Phpkq4N1GgQfe92h5pKYKeLdRQfjyUampAt5tFHjgux2Vmirg3UaBB77bUamp2jj4ipNgKQHgg8OHEQAe+G5HW0xV/UkHvrvCGwzfbbTBB5hiVnwXhTd4xcv0sC7A+wnwbqPAA9/taIupqj/pwHdXGHjHAO8nwLuNAg98t6Mtpqr+pAPfXWHgHQO8nwDvNgo88N2Otpiq+pMOfHeFgXcM8H4CvNso8MB3O9piqupPOvDdFQbeMcD7CfBuo8AD3+1oi6mqP+nAd1cYeMcA7yfAu40CD3y3oy2mqv6kA99dYeAdA7yfAO82Cjzw3Y62mKr6kw58d4WBdwzwfgK82yjw8vCB3uUG+ODwoeY4wqcFvos5jvBpge9ijiN8WuC7mOMIn7biva39TXpxJ/CRPG1FU/4mvbgT+EieFnj5WQQe+HieFnj5WQQe+HieFnj5WQQe+HieFnj5WQQe+HietmfwUf7gFfgO4MPME/A+4G/fHR4BH3Y0CPz1cfrhBPigoxWHTBn4q1Nrn+7t7T04XNETCZ0S2nL4jzl8oxXv8sUXulSUTcXwQowr4De6VJBjvEsPoUtF2VQM8G3O6l16CF0qyqZigF9EpofQpaJsCnj5UlE2Bbx8qSibAl6+VJRNAS9fKsqmgJcvFWVTwMuXirIp4OVLRdkU8PKlomwKePlSUTYFvHypKJsCXr5UlE0BL18qyqaAly8VZVPAy5eKsqm44GPKwy8ADJxNawp4T9m0poD3lE1rahPhiYcArzTAKw3wSrNh8LfvDp9/WbzoO458fWP6iaypy5O8o7VtbRj89bH5lBa/5hFHzCRfR9bUh8OT/Ldh1ra1ifCLX+yKIxb+KKqmvv7b9JR1tLatDYNPLw+Pl36VM46YXf1330fWlIHPOlrb1obBX5oVv/6rOFxKllaY9G3FZ3vVuA6nWVMlB9MwuezZMd7sVX//KbIT6IrT5zDp21k98RXglQZ4pQFeaYBXGuCVRin8dD9JtkYlD5gNB9NnF5310320whvUyU4JrIHvrpsQUQw/ffb56evt83GSHKTTp6+Tb4fmH5Mk2U3TcfKL13bFZ2P9jGL4yc7nx6N0+uT85uVo+jj779lnc//ZwNw33Tfwn7Ox0L3KRCt8dozP+M0CP7OrO/vvp8TkYHyQ3/dTNha6V5lohc9O3B6A37WjwPc2C/hiV1/Am52/PZ83971gV9/HLODNiVwySO/gL+5O7rZ+XZzc9XTBa4UnwCsN8EoDvNIArzTAKw3wSgO80gDfu9ifQ6z5meJsOH8VAvB9i73IPHv78IXmmz/N/wl83zLJV/vkm+1/HaTjweQ3+9vnZqVnrzoxO4O7V58A37eMB/bVJAeTXfslYOB3Lib258z2J472nulf8ocB37dMcmHzIYc31r/958jcLA2nwPcv2Q+Szwr4s0G28u9WvN0bFD9uBL53uXlhz+qNuvnHN4PJN8niGG8+7haPAr7nmaz5zg74ngd4ci/AKw3wSgO80gCvNP8Hy4iEep3cnjQAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">  theme_light()
+</code></pre>
+
+<pre><code>## List of 93
+##  $ line                      :List of 6
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ lineend      : chr &quot;butt&quot;
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ rect                      :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ text                      :List of 11
+##   ..$ family       : chr &quot;&quot;
+##   ..$ face         : chr &quot;plain&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 11
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : num 0
+##   ..$ lineheight   : num 0.9
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ title                     : NULL
+##  $ aspect.ratio              : NULL
+##  $ axis.title                : NULL
+##  $ axis.title.x              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.75points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.top          :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.75points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.bottom       : NULL
+##  $ axis.title.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.75points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.y.left         : NULL
+##  $ axis.title.y.right        :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.75points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text                 :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;grey30&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.2points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.top           :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.2points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.bottom        : NULL
+##  $ axis.text.y               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 1
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.2points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.y.left          : NULL
+##  $ axis.text.y.right         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.2points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.ticks                :List of 6
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ axis.ticks.x              : NULL
+##  $ axis.ticks.x.top          : NULL
+##  $ axis.ticks.x.bottom       : NULL
+##  $ axis.ticks.y              : NULL
+##  $ axis.ticks.y.left         : NULL
+##  $ axis.ticks.y.right        : NULL
+##  $ axis.ticks.length         : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ axis.ticks.length.x       : NULL
+##  $ axis.ticks.length.x.top   : NULL
+##  $ axis.ticks.length.x.bottom: NULL
+##  $ axis.ticks.length.y       : NULL
+##  $ axis.ticks.length.y.left  : NULL
+##  $ axis.ticks.length.y.right : NULL
+##  $ axis.line                 : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ axis.line.x               : NULL
+##  $ axis.line.x.top           : NULL
+##  $ axis.line.x.bottom        : NULL
+##  $ axis.line.y               : NULL
+##  $ axis.line.y.left          : NULL
+##  $ axis.line.y.right         : NULL
+##  $ legend.background         :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.margin             : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing            : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing.x          : NULL
+##  $ legend.spacing.y          : NULL
+##  $ legend.key                :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.key.size           : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height         : NULL
+##  $ legend.key.width          : NULL
+##  $ legend.text               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.text.align         : NULL
+##  $ legend.title              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.title.align        : NULL
+##  $ legend.position           : chr &quot;right&quot;
+##  $ legend.direction          : NULL
+##  $ legend.justification      : chr &quot;center&quot;
+##  $ legend.box                : NULL
+##  $ legend.box.just           : NULL
+##  $ legend.box.margin         : &#39;margin&#39; num [1:4] 0cm 0cm 0cm 0cm
+##   ..- attr(*, &quot;unit&quot;)= int 1
+##  $ legend.box.background     : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ legend.box.spacing        : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.background          :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.border              :List of 5
+##   ..$ fill         : logi NA
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 1
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.spacing             : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.spacing.x           : NULL
+##  $ panel.spacing.y           : NULL
+##  $ panel.grid                :List of 6
+##   ..$ colour       : chr &quot;grey87&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.minor          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.25
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major.x        : NULL
+##  $ panel.grid.major.y        : NULL
+##  $ panel.grid.minor.x        : NULL
+##  $ panel.grid.minor.y        : NULL
+##  $ panel.ontop               : logi FALSE
+##  $ plot.background           :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ plot.title                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.title.position       : chr &quot;panel&quot;
+##  $ plot.subtitle             :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : num 1
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 5.5points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption.position     : chr &quot;panel&quot;
+##  $ plot.tag                  :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.tag.position         : chr &quot;topleft&quot;
+##  $ plot.margin               : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.background          :List of 5
+##   ..$ fill         : chr &quot;grey70&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ strip.background.x        : NULL
+##  $ strip.background.y        : NULL
+##  $ strip.placement           : chr &quot;inside&quot;
+##  $ strip.text                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 4.4points 4.4points 4.4points 4.4points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.text.x              : NULL
+##  $ strip.text.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.switch.pad.grid     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.switch.pad.wrap     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.text.y.left         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;theme&quot; &quot;gg&quot;
+##  - attr(*, &quot;complete&quot;)= logi TRUE
+##  - attr(*, &quot;validate&quot;)= logi TRUE
+</code></pre>
+
+<pre><code class="r">### Caja
+ggplot(p6_alumnos, aes(x=&quot;&quot;, y=promedio)) +
+  geom_boxplot(outlier.colour = &quot;red&quot;, fill=&quot;#4DD9EA&quot;) +
+  stat_summary(fun=mean, geom=&quot;point&quot;, shape=17, size=4) +
+  coord_flip() +
+  theme_light()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">## Peso
+### Histograma
+p6_breaks_pe &lt;- pretty(range(p6_alumnos$peso), n=nclass.Sturges((p6_alumnos$peso)), min.n=1)
+
+ggplot(p6_alumnos, aes(x=peso)) +
+  geom_histogram(breaks=p6_breaks_pe, fill=&quot;#4DD9EA&quot;, color=&quot;#1D91C0&quot;) +
+  xlab(&quot;Peso&quot;) + ylab(&quot;Cantidad de estudiantes&quot;) +
+  labs(title=&quot;Histograma de peso&quot;, caption=&quot;Grupo 5&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAA/1BMVEUAAAAAADoAAGYAOpAAZmYAZpAAZrYdkcAzMzM6AAA6ADo6AGY6Ojo6OmY6OpA6ZmY6ZrY6kJA6kLY6kNtNTU1NTW5NTY5Nbm5NbqtNjshN2epmAABmADpmAGZmOgBmZmZmZrZmkJBmkNtmtttmtv9uTU1uTY5ubqtujshuq6tuq+SOTU2OTY6ObquOjk2OjsiOq+SOyP+QOgCQOjqQOmaQkGaQ2/+rbk2r5P+2ZgC2Zjq2tma2/7a2///Ijk3Ijm7Ijo7I///bkDrb25Db/7bb/9vb///kq27kq47k/8jk///r6+v/tmb/yI7/25D/5Kv//7b//8j//9v//+T///9QMplkAAAACXBIWXMAAAsSAAALEgHS3X78AAASOElEQVR4nO2dj1/bxhnGndBRaLvuB16XLGQ/vbVzl26QjYSthEC3kDFDCNH//7dMkp0GX2X7pHvv9L667/NJBT30+N7nvr6TkIU9KlCWGvVdAOpHgM9UgM9UgM9UgM9UgM9UvuCvPz2Zb+ffBOhm/yjsAZCEWoN3m1oL8CoE+EzVaamfjUb3jm4elZvierfaVl9+dDi5/vGv75+UPxxtF7eHv9sdbZfN20Uxb6lVfvtRCb703p8/a26f/qP+4aKlfuTi/aOiePIGvzuqdL8CX83Z2dar6ilw82hSzO6fVF/OR5Pr3cm85d7R7eHWq5tH5U6fHC1aqkep96t+WH7ZelW13B5W7r1Fy+KRF48aLTTqNuMrLoumGv7+UQmrglpSrncuWyqS7/8rvl/f6/32jxauqqX++fn2ouXOI3NEiKtOS325Lo8mdVNFsmR3Pv9S71StDfeWwM9bqkc5X4Cvlo97H8DPtr5btMwfefGosTKjovuvc7N60XdnfNVSzvrlGb9oqV0fZvxCd2b8QotHZsbHVRfwFckKTwV0+RhfrQHlsfl4acYvWqpHuXOMX6CenwtMFi2LR+YYH1/dz+pLZqPJnbP6j+YzuWwd/fxwcgf8omX+MLujn83P6hdn7beHvxmN9or3LZzVp5LcJdtuazOH8p4kA36xRHdwAr4nCc3481HHtRnwPYlX5zIV4DMV4DMV4DNVE/h3z8YPLsvNw6LezPW/9hqaR3Vx/p7V4K+mxcVBuXkx3wA+dUe9gn/9vPxab4piZ2cnbF1B6tR4jL8YT4vTivnpHHylqE9CGx7VxUnM+Ityxk/vznjAp+2oN/AHxdVDjvH9ddQX+Ldfj78446y+v476At+oqLXY8KguDvDxPKqLA3w8j+riAB/Po7o4wMfzqC4O8PE8qosDfDyP6uIAH8+jujjAx/OoLg7w8TyqiwN8PI/q4gAfz6O6OMDH86guzhD4jxsl34+YRyHELp7+wf+qQYCP7gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4ewKvtCPAi/Yh5FELs4gG82o4AL9KPmEchxC4epeA7/NE84Ft5WoKXVzP4xsb+ihys1M34Dus/M76VB/BJTPo8gE9i0ucBfBKTPg/gk5j0eQCfxKTPA/gkJn0ewCcx6fMAPolJnwfwSUz6PIBPYtLnAXwSkz4P4JOY9HkAn8SkzwP4JCZ9HsAnMenzAD6JSZ8H8ElM+jyAT2LS5wF8EpM+D+CTmPR5AJ/EpM8D+CQmfR7AJzHp8wA+iUmfB/BJTPo8gE9i0ucBfBKTPg/gk5j0/fkv4JOY9AUCfBKTvkCAT2LSFwjwSUz6AgE+iUlfIMAnMekLBPgkJn2BAJ/EpC8Q4JOY9AUCfBKTvkCAT2LSFwjwSUz6AgFe2tT8eoy6QICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQKvBv3s2fnBZbh4W9QbwniYjgVaDvzgo/11NixfzDeA9TUYCrQb/8ptyxr9+XlxN601R7Ozs+B4RWqjFOEXoPYJMBWoCX07yq+np8/ebeaP8k9DIBPE3GQm0GvzLs/eT/TXgW5iMBFoNvjzGX3GMb28yEmg1eM7qu5mMBFoNvlHytRgZJ3+TkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJBHhpk5FAgJc2GQkEeGmTkUCAlzYZCQR4aZORQICXNhkJ1BK8vFqMU39FtpGpQMx4OZORQICXNhkJ5IKfbd88Gk0A391kJJAD/vbp0fn29eevAN/ZZCSQA/7m8cnxXrkBfGeTkUDujP/7t/tHzPgQk5FADvhiNtr69/7RKu6A32wyEsgFv0HytRgZJ3+TkUAu+PKc/g9PmfEBJiOBHPC3h5PjCcf4EJORQA746qx+wll9iMlIoKYZP9tixnc3GQnkgK+O8aP7Kyc84DebjARywW+QfC1GxsnfZCSQA74+vHOMDzEZCbQE/vZwVItjfIDJSKCmGc9SH2IyEsgBX5xXM3712Z18LUbGyd9kJJA749dcpwe8l8lIIJZ6aZORQO5Sf7z67hvAe5mMBHJn/COO8YEmI4HcGb9B8rUYGSd/k5FALnjO6kNNRgK5S/3+0fFkts2M724yEsgF//jknJstg0xGAjngb58ezbYBH2IyEsgBX8y2/nM42mOp724yEsgFv0HytRgZJ3+TkUBL4G8ef8vv8aEmI4GY8dImI4GWZ/yj+evxzPgAk5FA7oyvrtXze3yIyUggBzy3XgWbjARywN8eVjOeW68CTEYCuUt9dZhfzR3wm01GArngN0i+FiPj5G8yEsgBz+vxwSYjgZpm/IxLtgEmI4GawHNWH2IyEqgJ/PWngO9uMhLIAT8/xrPUB5iMBGqa8WskX4uRcfI3GQnkzniu3IWajARaAs8fTQqYjARqmvEs9SEmI4Ec8LyXbbDJSCAHPO9lG2wyEuiHS/2H97J98+Xlu2fjh0W9AbynyUggd8bfeS/bd88eXF5NixcH9UYB+EZ1yOxdWyeTTfB338v24s9PLl8/L66m9aYodnZ2Vh77u6vFODU2RijJv/ZG2ah9rqYLOG++/O+Ty9OK+ekcfCX5J2Eo+A5Pdu/aNpnEahcrLuhGjMV72V6Mx+Pp3RkPeNc0IPBL72X79omuYzzgW9S2cc9l8EvvZVuCV3VWD/gWtW3cs2HGa73ZEvAtatu45w+P8WrfyxbwLWrbuKcDfoPkawG8ZHGAF6ltkwnwAbUAXrI4wIvUtsk0JPCaP4xocOD7fPHBAa/6w4gGB77PQA541R9GBHjBQE0zngs4nqYBgecCThvTkMBvkHwtRsap0TQY8JHfAyf0vgXACwZyZ3zM98CxPE6DC+SAj/qXNJbHaXCBHPBR3wPH8jgNLpC71Md8DxzL4zS4QC74DQqqxfI4DS4Q4DMNBPhMAwE+00BL4GNfwDE8ToML5M54LuBkEsgBzwWcXAI54LmAk0sgd6nnAk4mgVzwGxRUi+VxGlwgF3zMjxi1PE6DC+SAj/oRo5bHaXCBXPAxP2LU8jgNLpADPupHjFoep8EFcsBH/YhRy+M0uEAu+A0KqsXyOA0u0BJ4rtXnE8id8VyrzySQA55r9bkEcsBzrT6XQO5Sz7X6TAK54DcoqBbL4zS4QEvgbx5/G/MDBy2P0+ACMeMzDeSA56w+l0BL4CN/GJHlcRpcoKYZz1KfQSAHPDdi5BLInfH7q9/qDPBDCtRyqQ9SlHGKV24OgZZfpFmjoCeh5QkyuEAO+Bsu4GQSyJ3xGxRUi+VxGlwgFzxn9ZkEcpd6bq/OJJALnturMwnkgOf26lwCOeC5vTqXQC74DQqqxfI4DS4Q4DMNtAy+vtfyePVJPeAHE2gZ/HF9dF9DPqgWy+M0uEBL4Ben85zVZxBoCfzt3wGfS6Dlpf68uunq9pBf54YfaBl8Masu1a95ZTaoFsvjNLhADvhNCqrF8jgNLhDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQIDPNBDgMw0E+EwDAT7TQKvBv/16/MXZu2fjh0W9AfywAq0Gf3FQXEyvpsWLg3oD+GEFWrvUXx28fl5cTetNUezs7PgeEZoVZZzCSso9UDP4t08uTyvmp3PwlYKehJYnyOACrQH/9i9nxd0ZD/ghBVoN/s2fzoqCY/xQA60G/2I8Hk85qx9qoHXH+AYF1WJ5nD5ulOFAgPdTlNr7DAR4PwE+oBbL45QOfJMiBAK8n9KBXxtSLhDg/QT41gJ8cCPg140J4FsFAryfAN9agA9uBPy6MQF8q0CA9xPgWwvwwY2AXzcmgG8VCPB+AnxrAT64EfDrxgTwrQIB3k+Aby3ABzcCft2YAL5VIMD7CfCtBfjgRsCvGxPAtwoEeD8BvrUAH9wI+HVjAvhWgQDvJ8C3FuCDGwG/bkwA3yoQ4P0E+NYCfHAj4NeNCeBbBQK8nwDfWoAPbgT8ujEBfKtAgPcT4FsL8MGNgF83JoBvFQjwfgJ8awE+uBHw68YE8K0CAd5PgG8twAc3An7dmAC+VSDA+wnwrQX44EYF4IMUZZySVB6pdt/GeCGZ8ZuU+4z3ftymWqKMU9Cb/gLeLvjGxva1bRLgPccp2Qc6NDbKjxPgDYwT4H32BLz+QID3bZQfJ8AbGCfA++wJeP2BAO/bKD9OgDcwToD32RPw+gMB3rdRfpwAb2CcAO+zJ+D1BwK8b6P8OAHewDgB3mdPwOsPBHjfRvlx6he8990mgPdM7z1O/YL3Dgl4z/SNtfd7E0lQSMB7pldYu/eO3oGaowNeWe3eO3oHao4OeGW1e+/oHag5OuCV1e69o3eg5uiAV1a7947egZqjA15Z7d47egdqjg54ZbV77+gdqDk64JXV7r2jd6Dm6IBXVrv3jt6BmqMDXlnt3jt6B2qODnhltXvv6B2oOTrgldXuvaN3oObogFdWu/eO3oGaowNeWe3eO3oHao4OeGW1e+/oHag5OuCV1e69o3eg5uiAV1a7947egZqjA15Z7d47egdqjg54ZbV77+gdqDk64JXV7r2jd6Dm6IBXVrv3jt6BmqNnDV7fDbWAD2o0UqZvI+BDxkRhmb6NSsErXC6zAB/0Lr4i4HsckpzBNzYCHvDh4N89Gz8EfI+NfYG/mhYvDkyB91a/Zfo29gX+9fOKfbGzs9P4Y/9hRr1oDdr14E/n4FfN+E1PrYF5VBcn++vca8D30VH/4Dcc48VqseFRXZws+A1n9WK12PCoLq73S7adarHhUV0c4ON5VBcH+Hge1cUBPp5HdXGAj+dRXRzg43lUFwf4eB7VxQE+nkd1cYCP51FdHODjeVQXB/h4HtXFAT6eR3VxgI/nUV0c4ON5VBcH+Hge1cXFAt980528htaP2kCAH0hHgNfVj9pA3sd4NCwBPlMBPlMBPlN5gH/3bPyL53dutI6lsosHlwn6uRiPx9ME/SQL9Pbrsou2/XiAf/vXYulPK2Lp4qD8l6CfUi/PUvRT9pEkUDlwV6378QD/5o/lE/fOH1PF0stv0vRTE0nRTw0+QUcV+Idt+/EAXz7em7+dxq+/fMJeTRP0U034Ikk/F+Npio7Kpf6XX7Xtx+/k7mqaYsafpemnePNVkWTGX5QzPkmgLoA8wHc6hHRQqn7qAUrRT70Epxm4FzGO8fX54oDO6quBSpGnWoK/OEszcFHO6tEQBfhMBfhMBfhMBfhMBfhMlT34693R6N5R31WkF+A/f1XMtl71XUZyAb4EX/43G422i9vD0WivKM7r7cAF+HrGf1dujyez7eLm8cn1pyc3+4Nf/AFfH+PLCV9O8/L77aIo8ZdPgr7rii3Af14d3yvY9f/tjiaAz0Jz8NefHN0eTs4r5Hss9VloDr6oT+6K49GoPMEvT+4GP+EBn6sAn6kAn6kAn6kAn6kAn6kAn6kAn6kAPzhVrz6seHXx9vD7ew8APzRVl5tvnzZfcr757fffAn5oms1n++yz+//aK84ns5/s3j8pZ3p9r0m5GLy/5wTwQ9P5pHrhYW+2XT0FSvBbr2Z75+V31fOhbLn+/Xw3wA9Nsznh8sscfMn6p/88Kjd3flwAfniqX1I+XoCv7yr6MOOr1WDxwiPgB6ebR9VZfUm9/Oazyeyz0YdjfPl1cccJ4Ieu2Yrf7AA/cAEeLQnwmQrwmQrwmQrwmer/HO0KKe7xXSYAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">theme_light()
+</code></pre>
+
+<pre><code>## List of 93
+##  $ line                      :List of 6
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ lineend      : chr &quot;butt&quot;
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ rect                      :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ text                      :List of 11
+##   ..$ family       : chr &quot;&quot;
+##   ..$ face         : chr &quot;plain&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 11
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : num 0
+##   ..$ lineheight   : num 0.9
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ title                     : NULL
+##  $ aspect.ratio              : NULL
+##  $ axis.title                : NULL
+##  $ axis.title.x              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.75points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.top          :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.75points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.bottom       : NULL
+##  $ axis.title.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.75points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.y.left         : NULL
+##  $ axis.title.y.right        :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.75points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text                 :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;grey30&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.2points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.top           :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.2points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.bottom        : NULL
+##  $ axis.text.y               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 1
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.2points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.y.left          : NULL
+##  $ axis.text.y.right         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.2points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.ticks                :List of 6
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ axis.ticks.x              : NULL
+##  $ axis.ticks.x.top          : NULL
+##  $ axis.ticks.x.bottom       : NULL
+##  $ axis.ticks.y              : NULL
+##  $ axis.ticks.y.left         : NULL
+##  $ axis.ticks.y.right        : NULL
+##  $ axis.ticks.length         : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ axis.ticks.length.x       : NULL
+##  $ axis.ticks.length.x.top   : NULL
+##  $ axis.ticks.length.x.bottom: NULL
+##  $ axis.ticks.length.y       : NULL
+##  $ axis.ticks.length.y.left  : NULL
+##  $ axis.ticks.length.y.right : NULL
+##  $ axis.line                 : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ axis.line.x               : NULL
+##  $ axis.line.x.top           : NULL
+##  $ axis.line.x.bottom        : NULL
+##  $ axis.line.y               : NULL
+##  $ axis.line.y.left          : NULL
+##  $ axis.line.y.right         : NULL
+##  $ legend.background         :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.margin             : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing            : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing.x          : NULL
+##  $ legend.spacing.y          : NULL
+##  $ legend.key                :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.key.size           : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height         : NULL
+##  $ legend.key.width          : NULL
+##  $ legend.text               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.text.align         : NULL
+##  $ legend.title              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.title.align        : NULL
+##  $ legend.position           : chr &quot;right&quot;
+##  $ legend.direction          : NULL
+##  $ legend.justification      : chr &quot;center&quot;
+##  $ legend.box                : NULL
+##  $ legend.box.just           : NULL
+##  $ legend.box.margin         : &#39;margin&#39; num [1:4] 0cm 0cm 0cm 0cm
+##   ..- attr(*, &quot;unit&quot;)= int 1
+##  $ legend.box.background     : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ legend.box.spacing        : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.background          :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.border              :List of 5
+##   ..$ fill         : logi NA
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 1
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.spacing             : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.spacing.x           : NULL
+##  $ panel.spacing.y           : NULL
+##  $ panel.grid                :List of 6
+##   ..$ colour       : chr &quot;grey87&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.minor          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.25
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major.x        : NULL
+##  $ panel.grid.major.y        : NULL
+##  $ panel.grid.minor.x        : NULL
+##  $ panel.grid.minor.y        : NULL
+##  $ panel.ontop               : logi FALSE
+##  $ plot.background           :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ plot.title                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.title.position       : chr &quot;panel&quot;
+##  $ plot.subtitle             :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : num 1
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 5.5points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption.position     : chr &quot;panel&quot;
+##  $ plot.tag                  :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.tag.position         : chr &quot;topleft&quot;
+##  $ plot.margin               : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.background          :List of 5
+##   ..$ fill         : chr &quot;grey70&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ strip.background.x        : NULL
+##  $ strip.background.y        : NULL
+##  $ strip.placement           : chr &quot;inside&quot;
+##  $ strip.text                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 4.4points 4.4points 4.4points 4.4points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.text.x              : NULL
+##  $ strip.text.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.switch.pad.grid     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.switch.pad.wrap     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.text.y.left         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;theme&quot; &quot;gg&quot;
+##  - attr(*, &quot;complete&quot;)= logi TRUE
+##  - attr(*, &quot;validate&quot;)= logi TRUE
+</code></pre>
+
+<pre><code class="r">### Caja
+ggplot(p6_alumnos, aes(x=genero, y=peso)) +
+  geom_boxplot(outlier.colour = &quot;red&quot;, fill=&quot;#4DD9EA&quot;) +
+  stat_summary(fun=mean, geom=&quot;point&quot;, shape=17, size=4) +
+  coord_flip() +
+  theme_light()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">## Altura
+### Histograma
+p6_breaks_al &lt;- pretty(range(p6_alumnos$altura), n=nclass.Sturges((p6_alumnos$altura)), min.n=1)
+
+ggplot(p6_alumnos, aes(x=altura)) +
+  geom_histogram(breaks=p6_breaks_al, fill=&quot;#4DD9EA&quot;, color=&quot;#1D91C0&quot;) +
+  xlab(&quot;Altura&quot;) + ylab(&quot;Cantidad de estudiantes&quot;) +
+  labs(title=&quot;Histograma de altura&quot;, caption=&quot;Grupo 5&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r">theme_light()
+</code></pre>
+
+<pre><code>## List of 93
+##  $ line                      :List of 6
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ lineend      : chr &quot;butt&quot;
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ rect                      :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 0.5
+##   ..$ linetype     : num 1
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ text                      :List of 11
+##   ..$ family       : chr &quot;&quot;
+##   ..$ face         : chr &quot;plain&quot;
+##   ..$ colour       : chr &quot;black&quot;
+##   ..$ size         : num 11
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : num 0
+##   ..$ lineheight   : num 0.9
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ title                     : NULL
+##  $ aspect.ratio              : NULL
+##  $ axis.title                : NULL
+##  $ axis.title.x              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.75points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.top          :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.75points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.x.bottom       : NULL
+##  $ axis.title.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.75points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.title.y.left         : NULL
+##  $ axis.title.y.right        :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.75points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text                 :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;grey30&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 2.2points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.top           :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : num 0
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 2.2points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.x.bottom        : NULL
+##  $ axis.text.y               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 1
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 2.2points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.text.y.left          : NULL
+##  $ axis.text.y.right         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 0points 2.2points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ axis.ticks                :List of 6
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ axis.ticks.x              : NULL
+##  $ axis.ticks.x.top          : NULL
+##  $ axis.ticks.x.bottom       : NULL
+##  $ axis.ticks.y              : NULL
+##  $ axis.ticks.y.left         : NULL
+##  $ axis.ticks.y.right        : NULL
+##  $ axis.ticks.length         : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ axis.ticks.length.x       : NULL
+##  $ axis.ticks.length.x.top   : NULL
+##  $ axis.ticks.length.x.bottom: NULL
+##  $ axis.ticks.length.y       : NULL
+##  $ axis.ticks.length.y.left  : NULL
+##  $ axis.ticks.length.y.right : NULL
+##  $ axis.line                 : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ axis.line.x               : NULL
+##  $ axis.line.x.top           : NULL
+##  $ axis.line.x.bottom        : NULL
+##  $ axis.line.y               : NULL
+##  $ axis.line.y.left          : NULL
+##  $ axis.line.y.right         : NULL
+##  $ legend.background         :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.margin             : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing            : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ legend.spacing.x          : NULL
+##  $ legend.spacing.y          : NULL
+##  $ legend.key                :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ legend.key.size           : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height         : NULL
+##  $ legend.key.width          : NULL
+##  $ legend.text               :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.text.align         : NULL
+##  $ legend.title              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ legend.title.align        : NULL
+##  $ legend.position           : chr &quot;right&quot;
+##  $ legend.direction          : NULL
+##  $ legend.justification      : chr &quot;center&quot;
+##  $ legend.box                : NULL
+##  $ legend.box.just           : NULL
+##  $ legend.box.margin         : &#39;margin&#39; num [1:4] 0cm 0cm 0cm 0cm
+##   ..- attr(*, &quot;unit&quot;)= int 1
+##  $ legend.box.background     : list()
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_blank&quot; &quot;element&quot;
+##  $ legend.box.spacing        : &#39;simpleUnit&#39; num 11points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.background          :List of 5
+##   ..$ fill         : chr &quot;white&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.border              :List of 5
+##   ..$ fill         : logi NA
+##   ..$ colour       : chr &quot;grey70&quot;
+##   ..$ size         : &#39;rel&#39; num 1
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ panel.spacing             : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ panel.spacing.x           : NULL
+##  $ panel.spacing.y           : NULL
+##  $ panel.grid                :List of 6
+##   ..$ colour       : chr &quot;grey87&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.5
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.minor          :List of 6
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.25
+##   ..$ linetype     : NULL
+##   ..$ lineend      : NULL
+##   ..$ arrow        : logi FALSE
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_line&quot; &quot;element&quot;
+##  $ panel.grid.major.x        : NULL
+##  $ panel.grid.major.y        : NULL
+##  $ panel.grid.minor.x        : NULL
+##  $ panel.grid.minor.y        : NULL
+##  $ panel.ontop               : logi FALSE
+##  $ plot.background           :List of 5
+##   ..$ fill         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ plot.title                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.title.position       : chr &quot;panel&quot;
+##  $ plot.subtitle             :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : num 0
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 0points 0points 5.5points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : num 1
+##   ..$ vjust        : num 1
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 5.5points 0points 0points 0points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.caption.position     : chr &quot;panel&quot;
+##  $ plot.tag                  :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : &#39;rel&#39; num 1.2
+##   ..$ hjust        : num 0.5
+##   ..$ vjust        : num 0.5
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ plot.tag.position         : chr &quot;topleft&quot;
+##  $ plot.margin               : &#39;margin&#39; num [1:4] 5.5points 5.5points 5.5points 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.background          :List of 5
+##   ..$ fill         : chr &quot;grey70&quot;
+##   ..$ colour       : logi NA
+##   ..$ size         : NULL
+##   ..$ linetype     : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_rect&quot; &quot;element&quot;
+##  $ strip.background.x        : NULL
+##  $ strip.background.y        : NULL
+##  $ strip.placement           : chr &quot;inside&quot;
+##  $ strip.text                :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : chr &quot;white&quot;
+##   ..$ size         : &#39;rel&#39; num 0.8
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : NULL
+##   ..$ lineheight   : NULL
+##   ..$ margin       : &#39;margin&#39; num [1:4] 4.4points 4.4points 4.4points 4.4points
+##   .. ..- attr(*, &quot;unit&quot;)= int 8
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.text.x              : NULL
+##  $ strip.text.y              :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num -90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  $ strip.switch.pad.grid     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.switch.pad.wrap     : &#39;simpleUnit&#39; num 2.75points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ strip.text.y.left         :List of 11
+##   ..$ family       : NULL
+##   ..$ face         : NULL
+##   ..$ colour       : NULL
+##   ..$ size         : NULL
+##   ..$ hjust        : NULL
+##   ..$ vjust        : NULL
+##   ..$ angle        : num 90
+##   ..$ lineheight   : NULL
+##   ..$ margin       : NULL
+##   ..$ debug        : NULL
+##   ..$ inherit.blank: logi TRUE
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;element_text&quot; &quot;element&quot;
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;theme&quot; &quot;gg&quot;
+##  - attr(*, &quot;complete&quot;)= logi TRUE
+##  - attr(*, &quot;validate&quot;)= logi TRUE
+</code></pre>
+
+<pre><code class="r">### Caja
+ggplot(p6_alumnos, aes(x=genero, y=altura)) +
+  geom_boxplot(outlier.colour = &quot;red&quot;, fill=&quot;#4DD9EA&quot;) +
+  stat_summary(fun=mean, geom=&quot;point&quot;, shape=17, size=4) +
+  coord_flip() +
+  theme_light()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<pre><code class="r"># Punto 7: Medidas de tendencia central
+p7_mean &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(mean))
+p7_median &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(median))
+p7_mfv_p = mfv(alumnos$peso)
+p7_mfv_p_s = paste(c(&quot;M: &quot;, p7_mfv_p[1], &quot;  H: &quot;, p7_mfv_p[2]), collapse = &quot; &quot;)
+p7_mfv_a = mfv(alumnos$altura)
+p7_mfv_a_s = paste(c(&quot;M:&quot;, p7_mfv_a[1], &quot;  H:&quot;, p7_mfv_a[2]), collapse = &quot; &quot;)
+
+p7_mfv &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% 
+  summarise_at(c(&quot;promedio&quot;, &quot;edad&quot;), funs(mfv)) %&gt;% mutate(peso = p7_mfv_p_s, altura = p7_mfv_a_s)
+
+p7_sum &lt;- data.frame(Variables = c(&quot;promedio&quot;, &quot;edad&quot;, &quot;peso&quot;, &quot;altura&quot;), 
+                     Promedio = as.vector(t(p7_mean)), Mediana = as.vector(t(p7_median)), 
+                     Moda = as.vector(t(p7_mfv)))
+p7_ta = cbind(p7_sum)
+p7_ta
+</code></pre>
+
+<pre><code>##   Variables  Promedio Mediana                  Moda
+## 1  promedio  85.98896  85.950                 83.73
+## 2      edad  21.00120  21.000                    21
+## 3      peso  70.23813  73.685 M:  60.41   H:  81.22
+## 4    altura 170.23813 173.685 M: 160.41   H: 181.22
+</code></pre>
+
+<pre><code class="r"># Punto 8: Medidas de variabilidad
+rango &lt;- function(a) {
+  res &lt;- range(a)[2]-range(a)[1]
+  return(res)
+}
+
+p8_ra &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(rango))
+p8_var &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(var))
+p8_sd &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(sd))
+p8_cv &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(cv))
+
+p8_sum &lt;- data.frame(Variables = c(&quot;promedio&quot;, &quot;edad&quot;, &quot;peso&quot;, &quot;altura&quot;), 
+                     Rango = as.vector(t(p8_ra)), Varianza = as.vector(t(p8_var)), 
+                     CVariacion = as.vector(t(p8_cv)))
+p8_ta = cbind(p8_sum)
+p8_ta
+</code></pre>
+
+<pre><code>##   Variables Rango   Varianza CVariacion
+## 1  promedio 25.92  12.649682 0.04136158
+## 2      edad  8.00   1.127424 0.05055912
+## 3      peso 38.69 107.272388 0.14745891
+## 4    altura 38.69 107.272388 0.06083971
+</code></pre>
+
+<pre><code class="r"># Punto 9: Posición relativa
+qts = c(0.25,0.75,0.85,0.92)
+p9_pr &lt;- quantile(alumnos$promedio,qts)
+p9_ed &lt;- quantile(alumnos$edad,qts)
+p9_pe &lt;- quantile(alumnos$peso,qts)
+p9_al &lt;- quantile(alumnos$altura,qts)
+
+p9_cb = cbind(p9_pr, p9_ed, p9_pe, p9_al)
+
+p9_sum &lt;- data.frame(Variables = c(&quot;promedio&quot;, &quot;edad&quot;, &quot;peso&quot;, &quot;altura&quot;), 
+                     &quot;.25&quot; = as.vector(t(p9_cb[1,])), 
+                     &quot;.75&quot; = as.vector(t(p9_cb[2,])), 
+                     &quot;.85&quot; = as.vector(t(p9_cb[3,])), &quot;.92&quot; = as.vector(t(p9_cb[4,])))
+p9_ta = cbind(p9_sum)
+p9_ta
+</code></pre>
+
+<pre><code>##   Variables   X.25   X.75   X.85     X.92
+## 1  promedio  83.68  88.42  89.71  90.9708
+## 2      edad  20.00  22.00  22.00  22.0000
+## 3      peso  60.05  80.10  81.65  83.1400
+## 4    altura 160.05 180.10 181.65 183.1400
+</code></pre>
+
+<pre><code class="r"># Punto 10-11: Asimetría y apuntamiento
+p10_asi &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(skewness))
+p10_apu &lt;- alumnos %&gt;% select(promedio, edad, peso, altura) %&gt;% summarise_all(funs(kurtosis))
+
+p10_sum &lt;- data.frame(Variables = c(&quot;promedio&quot;, &quot;edad&quot;, &quot;peso&quot;, &quot;altura&quot;), 
+                      &quot;Asimetria&quot; = as.vector(t(p10_asi)),
+                      &quot;Apuntamiento&quot; = as.vector(t(p10_apu)))
+
+p10_ta = cbind(p10_sum)
+p10_ta
+</code></pre>
+
+<pre><code>##   Variables   Asimetria  Apuntamiento
+## 1  promedio -0.03993922 -0.0429190845
+## 2      edad -0.06553991 -0.0000692884
+## 3      peso  0.01524525 -1.7288749805
+## 4    altura  0.01524525 -1.7288749805
+</code></pre>
+
+<pre><code class="r">###
+summary(alumnos)
+</code></pre>
+
+<pre><code>##    matricula            carrera        Estrato      genero      promedio          edad         peso      
+##  Min.   :   1   ARQUITECTURA: 421   Min.   :1.000   F:2436   Min.   :73.28   Min.   :17   Min.   :52.77  
+##  1st Qu.:1251   QUIMICA     : 415   1st Qu.:2.000   M:2564   1st Qu.:83.68   1st Qu.:20   1st Qu.:60.05  
+##  Median :2500   ELECTRICA   : 407   Median :4.000            Median :85.95   Median :21   Median :73.69  
+##  Mean   :2500   ELECTRONICA : 403   Mean   :3.538            Mean   :85.99   Mean   :21   Mean   :70.24  
+##  3rd Qu.:3750   TIC         : 401   3rd Qu.:5.000            3rd Qu.:88.42   3rd Qu.:22   3rd Qu.:80.10  
+##  Max.   :5000   SISTEMAS    : 397   Max.   :6.000            Max.   :99.20   Max.   :25   Max.   :91.46  
+##                 (Other)     :2556                                                                        
+##      altura     
+##  Min.   :152.8  
+##  1st Qu.:160.1  
+##  Median :173.7  
+##  Mean   :170.2  
+##  3rd Qu.:180.1  
+##  Max.   :191.5  
+## 
+</code></pre>
+
+</body>
+
+</html>
