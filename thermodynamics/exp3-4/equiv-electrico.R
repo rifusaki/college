@@ -10,22 +10,27 @@ data_2 <- read.table("thermodynamics\\exp3-4\\teodiojuan.csv",
 
 #   Calibración del termistor
 res_to_temp <- function(df, beta) {
-  return(lapply(df, function(i) beta / log(1000 * i) - 273.15))
+  return(unlist(lapply(df, function(i) beta / log(1000 * i) - 273.15)))
 }
 beta <- 3950.0  #   Parámetro beta del termistor
 
 #   Equivalente en agua del calorímetro
-mamaguevodigoglugluglu <- data.frame(M0 = 151.3, T0 = 22,
-                                     Mc = 139.8, Tc = 90, Te = 52)
-k <- (mamaguevodigoglugluglu$Mc * (mamaguevodigoglugluglu$Tc - mamaguevodigoglugluglu$Te)) / (mamaguevodigoglugluglu$Te - mamaguevodigoglugluglu$T0) - mamaguevodigoglugluglu$M0
+k_data <- data.frame(M0 = 151.3, T0 = 22,
+                     Mc = 139.8, Tc = 90, Te = 52)
+k <- (k_data$Mc * (k_data$Tc - k_data$Te)) / (k_data$Te - k_data$T0) - k_data$M0
 
 #   Temperatura, potencia y calor experimental
-m_h2o <- 150.0
+exp_params <- data.frame(m1_h2o = 150, v1 = 4.9, a1 = 0.4,
+                         m2_h2o = 160, v2 = 9.1, a2 = 0.7)
 
 data_1$Te <- res_to_temp(data_1$R1, beta)   #  Temperatura
-data_1$W <- with(data_1, t * 0.9 * 4.9)     # Trabajo eléctrico
-# data_1$Q <- with(data_1, (150.0 + 25.78) * (Te - 64.11))
+data_1$W <- with(data_1,                    #  Trabajo eléctrico
+                 t1 * exp_params$v1 * exp_params$a1)
+data_1$Q <- with(data_1,                    #  Calor
+                 (exp_params$m1_h2o + k) * (Te - data_1$Te[1]))
 
-data_2$R2 <- res_to_temp(data_2$R2, beta)
-colnames(data_2) <- c("t", "Te")
-data_2$W <- with(data_2, t * 0.9 * 4.9)
+data_2$Te <- res_to_temp(data_2$R2, beta)
+data_2$W <- with(data_2,
+                 t2 * exp_params$v2 * exp_params$a2)
+data_2$Q <- with(data_2,
+                 (exp_params$m2_h2o + k) * (Te - data_2$Te[1]))
