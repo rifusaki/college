@@ -14,11 +14,10 @@ library(Rcmdr)
 
 
 # Importar datos
-EAlumnos <- 
+alumnos <- 
   readXL("probabilidad-fund\\Parcial\\Martina\\Alumnos.xlsx",
          rownames=FALSE, header=TRUE, na="", sheet="alumnos%20simulados", 
          stringsAsFactors=TRUE)
-alumnos <- data.frame(EAlumnos) 
 
 
 # Punto 2: Gráficas género, carrera y estrato
