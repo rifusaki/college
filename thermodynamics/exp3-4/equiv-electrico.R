@@ -24,8 +24,8 @@ k_data <- data.frame(M0 = 151.3, T0 = 22,
 k <- (k_data$Mc * (k_data$Tc - k_data$Te)) / (k_data$Te - k_data$T0) - k_data$M0
 
 #   Temperatura, potencia y calor experimental
-exp_params <- data.frame(m1_h2o = 90, v1 = 4.9, a1 = 0.4,
-                         m2_h2o = 60, v2 = 9.1, a2 = 0.7)
+exp_params <- data.frame(m1_h2o = 92, v1 = 4.9, a1 = 0.4,
+                         m2_h2o = 107, v2 = 9.1, a2 = 0.7)
 
 data_1$Te <- res_to_temp(data_1$R1, beta)   #  Temperatura
 data_1$W <- with(data_1,                    #  Trabajo eléctrico
@@ -79,7 +79,8 @@ data_2_sub <- subset(data_2, Q > 0)
 ggplot(data = data_2_sub) +
   geom_line(data = data.frame(W_pred = predict(model_2, data_2_sub),
                               Q = data_2_sub$Q), aes(x = Q, y = W_pred,
-                                                 color = "Ajuste"), size = 3) +
+                                                     color = "Ajuste"),
+            size = 3) +
   geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 7) +
   scale_color_manual(values = c("#ae3ac5", "#f1a10b"),
                      labels = c("Datos experimentales", "Ajuste"),
