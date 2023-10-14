@@ -3,12 +3,12 @@ library(ggplot2)
 library(stringr)
 
 #   Datos experimentales
-data_1 <- read.table("thermodynamics\\exp3-4\\teodiojuan.csv",
+data_1 <- read.table("thermodynamics\\exp2-3\\teodiojuan.csv",
                      header = TRUE, sep = ",",
                      colClasses = c("numeric", "numeric", "NULL", "NULL"),
                      skip = -2)
 data_1 <- data_1[!is.na(data_1$t1), ]
-data_2 <- read.table("thermodynamics\\exp3-4\\teodiojuan.csv",
+data_2 <- read.table("thermodynamics\\exp2-3\\teodiojuan.csv",
                      header = TRUE, sep = ",",
                      colClasses = c("NULL", "NULL", "numeric", "numeric"))
 
@@ -47,7 +47,7 @@ model_2 <- lm(W ~ Q, data = data_2, subset = (W > 0))
 cat("  [2] El equivalente es", unlist(model_2$coefficients[[2]]), "J/cal\n")
 
 #   Gráficas
-png(file = "thermodynamics\\exp3-4\\model_1.png",
+png(file = "thermodynamics\\exp2-3\\report\\model_1.png",
     width = 1720, height = 1080, res = 100)
 ggplot(data = data_1) +
   geom_line(data = data.frame(W_pred = predict(model_1, data_1),
@@ -75,7 +75,7 @@ ggplot(data = data_1) +
         legend.background = element_rect(fill = "white", color = "grey"))
 dev.off()
 
-png(file = "thermodynamics\\exp3-4\\model_2.png",
+png(file = "thermodynamics\\exp2-3\\report\\model_2.png",
     width = 1720, height = 1080, res = 100)
 data_2_sub <- subset(data_2, Q > 0)
 ggplot(data = data_2_sub) +
