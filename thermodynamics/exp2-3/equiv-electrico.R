@@ -14,7 +14,7 @@ data_2 <- read.table("thermodynamics\\exp2-3\\teodiojuan.csv",
 
 #   Calibración del termistor
 res_to_temp <- function(df, beta) {
-  return(unlist(lapply(df, function(i) beta / log(1000 * i) - 273.15)))
+  return(unlist(lapply(df, function(i) beta / log(10000 * i) - 273.15)))
 }
 beta <- 3950.0  #   Parámetro beta del termistor
 
@@ -39,6 +39,54 @@ data_2$W <- with(data_2,
 data_2$Q <- with(data_2,
                  (exp_params$m2_h2o + k) * (Te - data_2$Te[1]))
 
+#   Gráficas temperatura
+png(file = "thermodynamics\\exp2-3\\report\\temp_1.png",
+    width = 1720, height = 1080, res = 100)
+ggplot(data = data_1) +
+  geom_point(aes(x = t1, y = Te, color = "Temperatura"), size = 6) +
+  scale_color_manual(values = c("Temperatura" = "#3b47fa"),
+                     labels = c("Temperatura"),
+                     name = "Leyenda") +
+  ggtitle("Serie 1: Temperatura") +
+  scale_x_continuous(name = "t [s]") +
+  scale_y_continuous(name = "T [C]") +
+  theme_light() +
+  theme(plot.title = element_text(size = 30,
+                                  hjust = 0.5, family = "AvantGarde"),
+        axis.text = element_text(size = 22, family = "AvantGarde"),
+        axis.title = element_text(size = 25, family = "AvantGarde"),
+        axis.line.x.bottom = element_line(color = "black", size = 1.1),
+        axis.line.y.left = element_line(color = "black", size = 1.1),
+        legend.title = element_text(size = 21, family = "AvantGarde"),
+        legend.text = element_text(size = 20, family = "AvantGarde"),
+        legend.position = c(0.87, 0.1),
+        legend.background = element_rect(fill = "white", color = "grey"))
+dev.off()
+
+png(file = "thermodynamics\\exp2-3\\report\\temp_2.png",
+    width = 1720, height = 1080, res = 100)
+data_2_t <- subset(data_2, t2 > 0)
+ggplot(data = data_2_t) +
+  geom_point(aes(x = t2, y = Te, color = "Temperatura"), size = 6) +
+  scale_color_manual(values = c("Temperatura" = "#3b47fa"),
+                     labels = c("Temperatura"),
+                     name = "Leyenda") +
+  ggtitle("Serie 2: Temperatura") +
+  scale_x_continuous(name = "t [s]") +
+  scale_y_continuous(name = "T [C]") +
+  theme_light() +
+  theme(plot.title = element_text(size = 30,
+                                  hjust = 0.5, family = "AvantGarde"),
+        axis.text = element_text(size = 22, family = "AvantGarde"),
+        axis.title = element_text(size = 25, family = "AvantGarde"),
+        axis.line.x.bottom = element_line(color = "black", size = 1.1),
+        axis.line.y.left = element_line(color = "black", size = 1.1),
+        legend.title = element_text(size = 21, family = "AvantGarde"),
+        legend.text = element_text(size = 20, family = "AvantGarde"),
+        legend.position = c(0.87, 0.1),
+        legend.background = element_rect(fill = "white", color = "grey"))
+dev.off()
+
 #   Equivalente eléctrico
 model_1 <- lm(W ~ Q, data = data_1)
 cat("  [1] El equivalente es", unlist(model_1$coefficients[[2]]), "J/cal\n")
@@ -46,7 +94,7 @@ cat("  [1] El equivalente es", unlist(model_1$coefficients[[2]]), "J/cal\n")
 model_2 <- lm(W ~ Q, data = data_2, subset = (W > 0))
 cat("  [2] El equivalente es", unlist(model_2$coefficients[[2]]), "J/cal\n")
 
-#   Gráficas
+#   Gráficas calor y trabajo
 png(file = "thermodynamics\\exp2-3\\report\\model_1.png",
     width = 1720, height = 1080, res = 100)
 ggplot(data = data_1) +
