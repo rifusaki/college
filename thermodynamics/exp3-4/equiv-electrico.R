@@ -47,12 +47,28 @@ model_2 <- lm(W ~ Q, data = data_2)
 cat("  [2] El equivalente es", unlist(model_2$coefficients[[2]]), "J/cal\n")
 
 #   Gráficas
-png(file = "thermodynamics\\exp3-4\\model_1.png", width = 1720, height = 1080)
+png(file = "thermodynamics\\exp3-4\\model_1.png",
+    width = 1720, height = 1080, res = 100)
 ggplot(data = data_1) +
-  geom_point(aes(x = Q, y = W), size = 7) +
   geom_line(data = data.frame(W_pred = predict(model_1, data_1),
-                              Q = data_1$Q), aes(x = Q, y = W_pred)) +
-  theme(plot.title = element_text(size = 16, face = "bold"),
-        axis.text = element_text(size = 25),
-        axis.title = element_text(size = 30))
+                              Q = data_1$Q), aes(x = Q, y = W_pred,
+                                                 color = "Ajuste"), size = 3) +
+  geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 7) +
+  scale_color_manual(values = c("#ae3ac5", "#f1a10b"),
+                     labels = c("Datos experimentales", "Ajuste"),
+                     name = "Leyenda") +
+  ggtitle("Serie 1: Trabajo y calor") +
+  scale_x_continuous(name = "Q") +
+  scale_y_continuous(name = "W") +
+  theme_light() +
+  theme(plot.title = element_text(size = 30, face = "bold",
+                                  hjust = 0.5, family = "AvantGarde"),
+        axis.text = element_text(size = 25, family = "AvantGarde"),
+        axis.title = element_text(size = 30, family = "AvantGarde"),
+        axis.line.x.bottom = element_line(color = "black", size = 1.1),
+        axis.line.y.left = element_line(color = "black", size = 1.1),
+        legend.title = element_text(size = 22, family = "AvantGarde"),
+        legend.text = element_text(size = 20, family = "AvantGarde"),
+        legend.position = c(0.87, 0.1),
+        legend.background = element_rect(fill = "white", color = "grey"))
 dev.off()
