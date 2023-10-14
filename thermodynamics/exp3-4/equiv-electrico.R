@@ -52,7 +52,6 @@ ggplot(data = data_1) +
   geom_point(aes(x = Q, y = W), size = 7) +
   geom_line(data = data.frame(W_pred = predict(model_1, data_1),
                               Q = data_1$Q), aes(x = Q, y = W_pred)) +
-  # theme(text = element_text(size=20)
   theme(plot.title = element_text(size = 16, face = "bold"),
         axis.text = element_text(size = 25),
         axis.title = element_text(size = 30))
