@@ -1,6 +1,6 @@
 #   Librerías
 library(ggplot2)
-library(RColorBrewer)
+library(stringr)
 
 #   Datos experimentales
 data_1 <- read.table("thermodynamics\\exp3-4\\teodiojuan.csv",
@@ -52,22 +52,24 @@ png(file = "thermodynamics\\exp3-4\\model_1.png",
 ggplot(data = data_1) +
   geom_line(data = data.frame(W_pred = predict(model_1, data_1),
                               Q = data_1$Q), aes(x = Q, y = W_pred,
-                                                 color = "Ajuste"), size = 3) +
-  geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 7) +
-  scale_color_manual(values = c("#ae3ac5", "#f1a10b"),
-                     labels = c("Datos experimentales", "Ajuste"),
+                                                 color = "Ajuste"), size = 2) +
+  geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 6) +
+  scale_color_manual(values = c("Datos experimentales" = "#9e57be",
+                                "Ajuste" = "#f02d2d"),
+                     labels = c(str_glue("W(Q) = ({formatC(unlist(model_1$coefficients[[2]]), digits = 3, format = 'f')})Q + {formatC(unlist(model_1$coefficients[[1]]), digits = 3, format = 'f')}"),
+                                "Datos experimentales"),
                      name = "Leyenda") +
   ggtitle("Serie 1: Trabajo y calor") +
-  scale_x_continuous(name = "Q") +
-  scale_y_continuous(name = "W") +
+  scale_x_continuous(name = "Q [cal]") +
+  scale_y_continuous(name = "W [J]") +
   theme_light() +
-  theme(plot.title = element_text(size = 30, face = "bold",
+  theme(plot.title = element_text(size = 30,
                                   hjust = 0.5, family = "AvantGarde"),
-        axis.text = element_text(size = 25, family = "AvantGarde"),
-        axis.title = element_text(size = 30, family = "AvantGarde"),
+        axis.text = element_text(size = 22, family = "AvantGarde"),
+        axis.title = element_text(size = 25, family = "AvantGarde"),
         axis.line.x.bottom = element_line(color = "black", size = 1.1),
         axis.line.y.left = element_line(color = "black", size = 1.1),
-        legend.title = element_text(size = 22, family = "AvantGarde"),
+        legend.title = element_text(size = 21, family = "AvantGarde"),
         legend.text = element_text(size = 20, family = "AvantGarde"),
         legend.position = c(0.87, 0.1),
         legend.background = element_rect(fill = "white", color = "grey"))
@@ -80,22 +82,24 @@ ggplot(data = data_2_sub) +
   geom_line(data = data.frame(W_pred = predict(model_2, data_2_sub),
                               Q = data_2_sub$Q), aes(x = Q, y = W_pred,
                                                      color = "Ajuste"),
-            size = 3) +
-  geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 7) +
-  scale_color_manual(values = c("#ae3ac5", "#f1a10b"),
-                     labels = c("Datos experimentales", "Ajuste"),
+            size = 2) +
+  geom_point(aes(x = Q, y = W, color = "Datos experimentales"), size = 6) +
+  scale_color_manual(values = c("Datos experimentales" = "#9e57be",
+                                "Ajuste" = "#f02d2d"),
+                     labels = c(str_glue("W(Q) = ({formatC(unlist(model_2$coefficients[[2]]), digits = 3, format = 'f')})Q - {formatC(abs(unlist(model_2$coefficients[[1]])), digits = 3, format = 'f')}"),
+                                "Datos experimentales"),
                      name = "Leyenda") +
   ggtitle("Serie 2: Trabajo y calor") +
-  scale_x_continuous(name = "Q") +
-  scale_y_continuous(name = "W") +
+  scale_x_continuous(name = "Q [cal]") +
+  scale_y_continuous(name = "W [J]") +
   theme_light() +
-  theme(plot.title = element_text(size = 30, face = "bold",
+  theme(plot.title = element_text(size = 30,
                                   hjust = 0.5, family = "AvantGarde"),
-        axis.text = element_text(size = 25, family = "AvantGarde"),
-        axis.title = element_text(size = 30, family = "AvantGarde"),
+        axis.text = element_text(size = 22, family = "AvantGarde"),
+        axis.title = element_text(size = 25, family = "AvantGarde"),
         axis.line.x.bottom = element_line(color = "black", size = 1.1),
         axis.line.y.left = element_line(color = "black", size = 1.1),
-        legend.title = element_text(size = 22, family = "AvantGarde"),
+        legend.title = element_text(size = 21, family = "AvantGarde"),
         legend.text = element_text(size = 20, family = "AvantGarde"),
         legend.position = c(0.87, 0.1),
         legend.background = element_rect(fill = "white", color = "grey"))
