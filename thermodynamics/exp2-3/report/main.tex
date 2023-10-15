@@ -20,6 +20,7 @@
 \usepackage{lipsum}
 \usepackage{caption}
 \usepackage{booktabs}
+\usepackage{textcomp, gensymb}
 
 %-------Márgenes--------
 \usepackage{geometry}
@@ -68,20 +69,25 @@
 
 % RESUMEN
 {\large \textbf{Resumen}}\\
-En el presente informe se presentan los resultados obtenidos de la medición experimental de los equivalentes mecánico y eléctrico del calor. En el caso mecánico, se utilizó una máquina Pasco TD8551A y se encontró un valor de $J = 4.092 \frac{J}{cal}$ con error relativo porcentual de $\epsilon = 2.2\%$
+En el presente informe se presentan los resultados obtenidos de la medición experimental de los equivalentes mecánico y eléctrico del calor. En el caso mecánico, se utilizó una máquina Pasco TD8551A y se encontró un valor de $J = 4.092 \frac{J}{cal}$ con error relativo porcentual de $\epsilon = -2.2\%$. Por otro lado, en el caso eléctrico, se utilizó un calorímetro con una resistencia a la que se le aplicó una potencia variable. Tras dos intentos se encontraron los valores $J_1 = 3.939 \frac{J}{cal}$ y $J_2 = 4.366 \frac{J}{cal}$, con errores respectivos de $\epsilon = -5.8\%$ y $\epsilon = 4.3\%$.
 
- \textit{ \hspace{2mm}}
+\textit{ \hspace{2mm}}
 
 \section{Introducción}
 El principio de conservación de energía lleva a la equivalencia entre el trabajo aplicado sobre un sistema y la energía térmica resultante. Esto implica, por su parte, la equivalente entre el trabajo (mecánico o eléctrico) y el calor; y estas son relaciones cuantitativas que es posible obtener experimentalmente. Partamos de la primera ley de la termodinámica:
+
 \begin{align}
     \Delta U = W + Q
 \end{align}
+
 Donde $U$ es la energía interna, $W$ es el trabajo aplicado sobre el sistema y $Q$ su calor. Definamos entonces la expresión del equivalente del calor:
+
 \begin{align}
     J =  \frac{W}{Q}
 \end{align}
+
 O en el caso eléctrico:
+
 \begin{equation}
     J_e=\frac{E}{Q}
 \end{equation}
@@ -95,21 +101,26 @@ La máquina se compone de un cilindro de aluminio rodeado de una cuerda fija (es
 \begin{align}
     W = \tau \theta
 \end{align}
+
 Experimentalmente es posible medir la cantidad de rotaciones del cilindro, por lo tanto la anterior ecuación queda descrita: 
+
 \begin{align}
     W = MgR2\pi n
     \label{eq:mecw}
 \end{align}
-donde $M$ es la masa colgante; $R$, Radio del cilindro; y $n$ numero de vueltas dadas.\\
+
+Donde $M$ es la masa colgante; $R$, Radio del cilindro; y $n$ numero de vueltas dadas.\\
 
 El  TD8551A tiene una cuerda enrollada que al girar la manivela hace que la fricción entre la cuerda y el cilindro sea suficiente para soportar la masa colgada del otro extremo de esta cuerda y de esta manera la cuerda convierte el trabajo en energía térmica, la cual eleva la temperatura del cilindro. Este mecanismo nos proporciona seguridad en que la acción del torque sobre el cilindro es constante y medible.
 
 \subsubsection{Calor}
 Simultáneamente a la rotación del cilindro se monitoreó su temperatura utilizando un termorresistor. Esto es porque conociendo la diferencia de temperaturas durante el proceso podemos calcular fácilmente el calor que recibió:
+
 \begin{equation}
     Q = M C_{Al} \cdot (T_f-T_i)
     \label{eq:mecq}
 \end{equation}
+
 Donde $C_{Al}$ es el calor específico del aluminio y $M$ la masa del cilindro.\cite{pasco}
 
 \subsection{Equivalente eléctrico}
@@ -117,18 +128,23 @@ La estrategia es similar al caso anterior: aplicar un trabajo eléctrico sobre u
 
 \subsubsection{Trabajo}
 Para un circuito eléctrico conectado a un voltaje $V$ con corriente eléctrica $I$, definimos su potencia como\cite{purcell}:
+
 \begin{equation}
     P=I\cdot V
 \end{equation}
+
 Sabiendo que esta potencia está dada en Watts, cuya definición es Joule/s, encontramos que para calcular la energía eléctrica disipada por el sistema en un tiempo $\Delta t$:
+
 \begin{equation}
-    E=P\cdot\Delta t \label{energia}
+    E=P\cdot\Delta t 
+    \label{energia}
 \end{equation}
 
 \subsubsection{Calor}
 Se tiene que el calor disipado en un calorímetro con agua es:
 \begin{equation}
-    Q=(M+k)(T_e - T_0) \label{calor}
+    Q=(M+k)(T_e - T_0) 
+    \label{calor}
 \end{equation}
 Donde $M$ es la masa del agua, $k$ es la capacidad calorífica del calorímetro y $T_e$ y $T_o$ son las temperaturas de equilibrio y ambiente, respectivamente.\\
 
@@ -177,74 +193,154 @@ Por otro lado, los instrumentos utilizados para el montaje experimental fueron:
 La medición consiste en la mezcla de dos masas de agua aproximadamente iguales $M_0$ y $M_c$, una a temperatura ambiente $T_0$ y otra en su punto de ebullición $T_c$, y medir su temperatura de equilibrio $T_e$. Finalmente, se utiliza la expresión \ref{keq}.
 
 \subsubsection{Equivalente eléctrico del calor}
-Con un voltaje $V$ y corriente $I$ fijos, se introduce una cantidad $M$ de agua dentro del calorímetro; este tiene una resistencia que calentará el agua. Con la termocupla se anotan los cambios de temperatura en el tiempo.
+Con un voltaje $V$ y corriente $I$ fijos, se introduce una cantidad $M$ de agua dentro del calorímetro; este tiene una resistencia que calentará el agua. Con la termocupla se anotan los cambios de temperatura en el tiempo. Este experimento se realizó dos veces con parámetros distintos de voltaje y corriente.
 
 \section{Resultados y análisis}
 
 \subsection{Equivalente mecánico}
 A continuación vemos las medidas experimentales correspondientes al equivalente mecánico.
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{RvsV.png}
     \caption{Relación entre resistencia y revoluciones del cilindro.}
     \label{fig:mecresrev}
 \end{figure}
+
 La medida está dada en resistencia pues, como se mencionó en la sección anterior, el termistor utilizado es del tipo NTC. Utilizando la tabla de conversión proporcionada por el fabricante\cite{pasco}, es posible realizar una regresión lineal al logaritmo de la resistencia. De este modo obtenemos una función continua de temperatura en función de resistencia y podemos encontrar el siguiente comportamiento de la resistencia en relación con el número de vueltas:
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{TvsV.png}
     \caption{Relación entre temperatura y revoluciones del cilindro.}
     \label{fig:mectemprev}
 \end{figure}
+
 Habiendo convertido las temperaturas a Kelvin, utilizamos las ecuaciones \ref{eq:mecw} y \ref{eq:mecq} para calcular el trabajo mecánico sobre el sistema y el calor absorbido, respectivamente. Tenemos, entonces, el siguiente resultado:
-\begin{figure}
+
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{mecworkheat.png}
     \caption{Relación entre el trabajo y el calor en el caso mecánico.}
     \label{fig:mecworkheat}
 \end{figure}
+
 Finalmente, conocemos que el equivalente mecánico del calor estará definido por:
+
 \begin{equation}
     J = \frac{W}{Q}
     \label{eqivmec}
 \end{equation}
+
 Sabiendo esto, encontramos experimentalmente que el equivalente es:
+
 \begin{equation*}
     J = 4.092 \frac{J}{cal}
 \end{equation*}
 
 \subsection{Equivalente eléctrico}
 \subsubsection{Equivalente en agua del calorímetro}
-En la siguiente tabla se resumen los datos recolectados:
+En la siguiente tabla se resumen los datos recolectados necesarios para el cálculo del equivalente:
 
 \begin{table}[H]
 \centering
 \begin{tabular}{l|l}
-$M_0$ & $(a \pm b)g$\\
-$T_0$ & $(a \pm b) \degree C$a\\
-$M_c$ & $(a \pm b)g$\\
-$T_c$ & $(a \pm b) \degree C$\\
-$T_e$ & $(a \pm b) \degree C$
+$M_0$ & $(151.3 \pm 0.05)g$ \\
+$T_0$ & $(22 \pm 0.5) \degree C$    \\
+$M_c$ & $(139.8 \pm 0.05)g$ \\
+$T_c$ & $(90 \pm 0.5) \degree C$    \\
+$T_e$ & $(52 \pm 0.5) \degree C$    \\
 \end{tabular}
 \end{table}
 
 Utilizando la expresión \ref{keq} y utilizando propagación de errores, tenemos:
 
+\begin{equation*}
+    k = (25.78 \pm 0.12) g
+\end{equation*}
 
 \subsubsection{Equivalente eléctrico del calor}
+Veamos, primero, el aumento de la temperatura en ambos intentos con potencia constante:
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{temp_1.png}
+        \caption{Primera medición}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{temp_2.png}
+        \caption{Segunda medición}
+    \end{subfigure}
+    \caption{Aumento de la temperatura en el tiempo dentro del calorímetro.}
+    \label{fig:electemp}
+\end{figure}
 
+Los dos procedimientos se realizaron con condiciones de voltaje y corriente distintos, lo que significa que la potencia y, por tanto, el trabajo eléctrico realizado, son distintos. Los valores fueron los siguientes:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l|l}
+           & Medición 1          & Medición 2          \\
+\hline
+$M_{H_2O}$ & $(158.1 \pm 0.05)g$ & $(147.3 \pm 0.05)g$ \\
+$V$        & $(4.9 \pm 0.1)V$    & $(9.1 \pm 0.1)V$    \\
+$A$        & $(0.1 \pm 0.1)A$    & $(0.7 \pm 0.1)A$    \\
+\end{tabular}
+\end{table}
+
+Así pues, utilizando \ref{energia} para calcular la energía disipada y \ref{calor} para el calor absorbido (incluyendo el calorímetro), obtenemos las siguientes relaciones:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{model_1.png}
+        \caption{Primera medición}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{model_2.png}
+        \caption{Segunda medición}
+    \end{subfigure}
+    \caption{Relación entre trabajo eléctrico y calor absorbido.}
+    \label{fig:calortrabajo}
+\end{figure}
+
+Sabiendo que para el caso eléctrico la relación, similar al caso anterior, es:
+
+\begin{equation}
+    J = \frac{E}{Q}
+    \label{eqivelec}
+\end{equation}
+
+Encontramos experimentalmente los siguientes valores para el equivalente:
+
+\begin{equation*}
+    J_1 = 3.939 \frac{J}{cal} \hspace{2.5cm} J_2 = 4.366 \frac{J}{cal}
+\end{equation*}
 
 \section{Conclusiones}
-\subsection{Equivalente mecánico}
-Se encontró experimentalmente el siguiente valor para el equivalente mecánico del calor:
-\begin{equation*}
-    J = 4.092 \frac{J}{cal}
-\end{equation*}
-Por otro lado, conocemos por la literatura\cite{pasco} que el valor esperado es $J = 4.184 \frac{J}{cal}$. De este modo, encontramos un error relativo porcentual de $\epsilon = 2.2\%$. Este error puede haber provenido de varios factores: por un lado, dado que el sistema no estaba completamente aislado, es posible que una parte del calor se haya cedido al ambiente; por otro lado, se encontraron dificultades a la hora de operar el TD8551A, con lecturas inconsistentes de resistencia e inestabilidad estructural al colgar las masas. 
+Conocemos, gracias a la literatura\cite{pasco}, que el valor esperado para el equivalente entre Julio y caloría es $J = 4.184 \frac{J}{cal}$. De este modo podemos recopilar los resultados:
 
-\subsection{Equivalente eléctrico}
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l|l}
+Método      & J $\left ( \frac{J}{cal} \right )$ & $\epsilon$ $(\%)$ \\
+\hline
+Mecánico    & $4.092$ & $-2.2$ \\
+Eléctrico 1 & $3.939$ & $-5.8$ \\
+Eléctrico 2 & $4.366$ & $4.3$ \\
+\end{tabular}
+\end{table}
 
+En el caso del equivalente mecánico, consideramos que este error puede haber provenido de varios factores: por un lado, dado que el sistema no estaba completamente aislado, es posible que una parte del calor se haya cedido al ambiente; por otro lado, se encontraron dificultades a la hora de operar el TD8551A, con lecturas inconsistentes de resistencia e inestabilidad estructural al colgar las masas.\\
+
+Por otro lado, el equivalente eléctrico comparte algunas posibles fuentes de error con el anterior, como lo son la falta de aislamiento total del exterior o la inconsistencia del termorresistor a la hora de medir su resistencia.. También es posible que el agua no haya sido perfectamente mezclada.
 
 
 \begin{thebibliography}{X}
@@ -255,6 +351,6 @@ Por otro lado, conocemos por la literatura\cite{pasco} que el valor esperado es 
 
 \bibitem{scehu} Curso Interactivo de Física en Internet. Calor específico de un sólido. \path{http://www.sc.ehu.es/sbweb/fisica3/calor/calorimetro/calorimetro.html}. 
 
- \end{thebibliography}
+\end{thebibliography}
 
 \end{document}
