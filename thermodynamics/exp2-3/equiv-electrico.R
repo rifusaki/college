@@ -14,7 +14,7 @@ data_2 <- read.table("thermodynamics\\exp2-3\\teodiojuan.csv",
 
 #   Calibración del termistor
 res_to_temp <- function(df, beta) {
-  return(unlist(lapply(df, function(i) beta / log(10000 * i) - 273.15)))
+  return(unlist(lapply(df, function(i) beta / log(10000 * i))))
 }
 beta <- 3950.0  #   Parámetro beta del termistor
 
@@ -24,8 +24,8 @@ k_data <- data.frame(M0 = 151.3, T0 = 22,
 k <- (k_data$Mc * (k_data$Tc - k_data$Te)) / (k_data$Te - k_data$T0) - k_data$M0
 
 #   Temperatura, potencia y calor experimental
-exp_params <- data.frame(m1_h2o = 92, v1 = 4.9, a1 = 0.4,
-                         m2_h2o = 107, v2 = 9.1, a2 = 0.7)
+exp_params <- data.frame(m1_h2o = 158, v1 = 4.9, a1 = 0.4,
+                         m2_h2o = 147, v2 = 9.1, a2 = 0.7)
 
 data_1$Te <- res_to_temp(data_1$R1, beta)   #  Temperatura
 data_1$W <- with(data_1,                    #  Trabajo eléctrico
@@ -49,7 +49,7 @@ ggplot(data = data_1) +
                      name = "Leyenda") +
   ggtitle("Serie 1: Temperatura") +
   scale_x_continuous(name = "t [s]") +
-  scale_y_continuous(name = "T [C]") +
+  scale_y_continuous(name = "T [K]") +
   theme_light() +
   theme(plot.title = element_text(size = 30,
                                   hjust = 0.5, family = "AvantGarde"),
@@ -73,7 +73,7 @@ ggplot(data = data_2_t) +
                      name = "Leyenda") +
   ggtitle("Serie 2: Temperatura") +
   scale_x_continuous(name = "t [s]") +
-  scale_y_continuous(name = "T [C]") +
+  scale_y_continuous(name = "T [K]") +
   theme_light() +
   theme(plot.title = element_text(size = 30,
                                   hjust = 0.5, family = "AvantGarde"),
