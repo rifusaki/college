@@ -1,35 +1,79 @@
-\documentclass[10pt]{article}
-\usepackage[legalpaper, portrait, margin=1in]{geometry}
+\documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage[spanish, mexico]{babel}
-\usepackage{subcaption}
+\usepackage[spanish, es-tabla]{babel}
 \usepackage{amsmath}
-\usepackage{multicol}
-\usepackage{array}
-\usepackage{multirow}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{amssymb}
+\usepackage{graphics}
 \usepackage{float}
-\usepackage{url}
-%\usepackage[latin1]{inputenc} % acentos sin codigo
-\usepackage{verbatim} % comentarios
-\setlength{\columnsep}{2cm}%[NO TOCAR]
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{mwe}
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{textcomp, gensymb}
 
-\title{\textbf{Ley de enfriamiento de Newton
-}}
-\author{\textsl{Andrés Felipe Suarez Reyes  }\texttt{($asuarezre@unal.edu.co$)}\\\textsl{Jhon Sebastian Palacio Correa}\texttt{($jspalacioco@unal.edu.co$)}\\\textsl{Martina García Mejía}\texttt{($mgarciamej@unal.edu.co$)} \\
-\rule{5cm}{0.3mm}}
+%-------Márgenes--------
+\usepackage{geometry}
+\newgeometry{
+    left=2.54cm,
+    right=2.54cm,
+    top=2.4cm,
+    bottom=2.4cm}
+%-------Pie de Página--------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}    % Quitar configuración por defecto
+\renewcommand{\headrulewidth}{0pt}  %Quitar linea del encabezado
+\cfoot[]{}   
+\lfoot[]{\small \textit{Termodinámica modulo experimental, 2023} }
+\rfoot[]{\textit{\thepage}}
+\setcounter{page}{1}   %Numeración
+%\usepackage{showframe}
+%--------------------------------------------------------------
+
+
+
 \date{}
-\providecommand{\norm}[1]{\lVert#1\rVert}
+%===============================================================
+% Inicio del documento
 \begin{document}
+ 
+     \begin{center}
+    % TÍTULO DEL TRABAJO
+        {\Large \textbf{Equivalente mecánico y eléctrico del calor}}\\
+        \vspace{5mm}
+        % AUTORES 
+        {\small \textbf{A.F.Suarez Reyes $^{1}$},\textbf{J.S. Palacio Correa$^{2}$},\textbf{M. García Mejía$^{3}$} \\
+        \vspace{3mm}}
+        % AUTORES 
+        {\small \textit{Departamento de Física, Universidad Nacional de Colombia, Sede Bogotá, Bogotá, Colombia.}}\\
+        \vspace{3mm}
+        % FECHA 
+        {\small 02/10/2023}\\
+        \vspace{3mm}
+        {\texttt{\textup{asuarezre@unal.edu.co$^{1}$, jspalacioco@unal.edu.co$^2$, mgarciamej@unal.edu.co$^{3}$}}} \\
+    \end{center}
+    
+    
+    \vspace{5mm}
 
-\maketitle
+% RESUMEN
+{\large \textbf{Resumen}}\\
+aaaaa
 
-\section*{Resumen}
-
-
+\textit{ \hspace{2mm}}
 
 \section{Introducción}
-
 En un sistema donde los cuerpos presentan diferencias en sus temperaturas habrá un intercambio de energía hasta que el sistema alcance el equilibrio. A esta transferencia de energía  se le conoce como calor y puede presentarse por convección, radiación o conducción. 
 En nuestro sistema colocamos varios elementos en contacto con el medio ambiente después de aumentar su temperatura . Una ley que nos permite modelar la transferencia de calor en esta experiencia es la conocida ley de enfriamiento de Newton, la cual establece que: 
 \begin{align}
@@ -68,7 +112,7 @@ Asumiendo una temperatura inicial $T_i$, obtenemos:
 \end{align}
 En el caso donde el sistema 
 
-\section{Procedimiento experimental}
+\section{Desarrollo experimental}
 El objetivo de esta practica es comprobar la validez de la ley de enfriamiento de Newton[ecuación(6)]. Con este objetivo en mente la practica consistió en partes, la primera en elevar la temperatura de 5 cilindros de (hierro o acero????)  y permitir que estos se enfriaran a temperatura ambiente mientras mediamos su temperatura en función del tiempo. 
 Para elevar la temperatura del cilindro fue sumergido en agua hasta alcanzar la temperatura de ebullición( ??), a su vez en su interior estaba dispuesto un termopar que media la temperatura al retirarlo y dejarlo suspendido mientras interacciona con el ambiente(Aire). Durante este proceso de enfriamiento con ayuda de un multimetro pudimos registrar el cambio de temperatura hasta que esta tomara un valor mas o menos constante o variara muy poco. El anterior procedimiento se repitió para 5 cilindros con diferentes geometrías.  \\ 
 La segunda parte de la practica consistió en aumentar la temperatura de un cilindro de bronce que contiene una resistencia eléctrica en su interior con ayuda de una fuente, la recolección de los datos de temperatura en función del tiempo fue exactamente igual que la primera parte.
@@ -93,7 +137,7 @@ La segunda parte de la practica consistió en aumentar la temperatura de un cili
 \end{itemize}
 
 \subsection{Montaje}
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{Montaje.png}
     \caption{Montaje experimental: Ley de enfriamiento.}
@@ -104,8 +148,16 @@ La segunda parte de la practica consistió en aumentar la temperatura de un cili
 
 \section{Conclusiones}
 
+\begin{thebibliography}{X}
 
-\begin{thebibliography}{15}
-   {prof} Evelio, R. J.(2023). Ley de enfriamiento
+\bibitem{pasco} Instruction Manual and Experiment Guide for the PASCO scientific Model TD-8551A. \path{https://cdn.pasco.com/product_document/Mechanical-Equivalent-of-Heat-Apparatus-Manual-TD-8551A.pdf}
+
+\bibitem{purcell} Edward M. Purcell, David J. Morin. Electricity and Magnetism (2013).
+
+\bibitem{scehu} Curso Interactivo de Física en Internet. Calor específico de un sólido. \path{http://www.sc.ehu.es/sbweb/fisica3/calor/calorimetro/calorimetro.html}. 
+
+\bibitem{prof} Evelio, R. J.(2023). Ley de enfriamiento
+
 \end{thebibliography}
+
 \end{document}
