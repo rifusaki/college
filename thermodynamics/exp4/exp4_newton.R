@@ -24,13 +24,13 @@ metadata <- list(c(14.8, 1.6, 1.27),
 simple_scatter <- function(df, n, x, y, legend_1, title, xlabel, ylabel) {
   p <- ggplot(data = df) +
     geom_point(aes(x = !!as.name(x), y = !!as.name(y),
-                   color = legend_1), data = df, size = 6) +
+                   color = legend_1), size = 6) +
     scale_color_manual(values = c(legend_1 = "#3b47fa"),
                        labels = c(legend_1),
                        name = "Leyenda") +
     ggtitle(title) +
-    scale_x_discrete(name = xlabel) +
-    scale_y_discrete(name = ylabel) +
+    scale_x_continuous(name = xlabel) +
+    scale_y_continuous(name = ylabel) +
     theme_light() +
     theme(plot.title = element_text(size = 27,
                                     hjust = 0.5, family = "AvantGarde"),
@@ -57,4 +57,3 @@ for (i in seq_along(data)) {
 
   dev.off()
 }
-
