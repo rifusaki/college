@@ -22,7 +22,7 @@ metadata <- list(c(14.8, 1.6, 1.27),
 
 #   Función para graficar una lista de tablas en scatterplot
 simple_scatter <- function(df, n, x, y, legend_1, title, xlabel, ylabel) {
-  p <- ggplot(data = df) +
+  ggplot(data = df) +
     geom_point(aes(x = !!as.name(x), y = !!as.name(y),
                    color = legend_1), size = 6) +
     scale_color_manual(values = c(legend_1 = "#3b47fa"),
@@ -42,18 +42,13 @@ simple_scatter <- function(df, n, x, y, legend_1, title, xlabel, ylabel) {
           legend.text = element_text(size = 20, family = "AvantGarde"),
           legend.position = c(0.87, 0.1),
           legend.background = element_rect(fill = "white", color = "grey"))
-
-  return(p)
 }
 
 #   Graficar temperatura en todos los casos
 for (i in seq_along(data)) {
-  png(file = paste("thermodynamics\\exp4\\report\\out_", i, ".png", sep = ""),
-      width = 1720, height = 1080, res = 100)
-
   print(simple_scatter(data[[i]], i, "time", "Temp", "Temperatura medida",
                        paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
                        "t [s]", "T [C]"))
 
-  dev.off()
+  ggsave(paste("thermodynamics\\exp4\\report\\out_", i, ".png", sep = ""))
 }
