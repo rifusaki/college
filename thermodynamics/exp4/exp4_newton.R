@@ -21,12 +21,12 @@ metadata <- list(c(14.8, 1.6, 1.27),
                  c(183.3, 6.332, 2.21, 5, 0.8))
 
 #   Función para graficar una lista de tablas en scatterplot
-simple_scatter <- function(df, n, x, y, legend_1, title, xlabel, ylabel) {
+simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
   ggplot(data = df) +
     geom_point(aes(x = !!as.name(x), y = !!as.name(y),
-                   color = legend_1), size = 6) +
-    scale_color_manual(values = c(legend_1 = "#3b47fa"),
-                       labels = c(legend_1),
+                   color = names(labels)[[1]]), size = 6) +
+    scale_color_manual(values = labels,
+                       labels = names(color),
                        name = "Leyenda") +
     ggtitle(title) +
     scale_x_continuous(name = xlabel) +
@@ -40,13 +40,14 @@ simple_scatter <- function(df, n, x, y, legend_1, title, xlabel, ylabel) {
           axis.line.y.left = element_line(color = "black", size = 1.1),
           legend.title = element_text(size = 21, family = "AvantGarde"),
           legend.text = element_text(size = 20, family = "AvantGarde"),
-          legend.position = c(0.87, 0.1),
+          legend.position = c(0.87, 0.9),
           legend.background = element_rect(fill = "white", color = "grey"))
 }
 
 #   Graficar temperatura en todos los casos
+labs <- c("Temperatura medida" = "#3b47fa")
 for (i in seq_along(data)) {
-  print(simple_scatter(data[[i]], i, "time", "Temp", "Temperatura medida",
+  print(simple_scatter(data[[i]], i, "time", "Temp", labs,
                        paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
                        "t [s]", "T [C]"))
 
