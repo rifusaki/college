@@ -26,7 +26,7 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
     geom_point(aes(x = !!as.name(x), y = !!as.name(y),
                    color = names(labels)[[1]]), size = 6) +
     scale_color_manual(values = labels,
-                       labels = names(color),
+                       labels = names(labels),
                        name = "Leyenda") +
     ggtitle(title) +
     scale_x_continuous(name = xlabel) +
@@ -51,5 +51,6 @@ for (i in seq_along(data)) {
                        paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
                        "t [s]", "T [C]"))
 
-  ggsave(paste("thermodynamics\\exp4\\report\\out_", i, ".png", sep = ""))
+  ggsave(paste("thermodynamics\\exp4\\report\\Tvt_", i, ".png", sep = ""),
+         width = 40, height = 30, units = "cm")
 }
