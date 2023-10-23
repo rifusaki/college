@@ -20,6 +20,11 @@ metadata <- list(c(14.8, 1.6, 1.27),
                  c(50.2, 5.25, 1.26),
                  c(183.3, 6.332, 2.21, 5, 0.8))
 
+#   Logaritmo de temperaturas
+for (i in seq_along(data)) {
+  data[[i]]$LnTemp <- log(data[[i]]$Temp)
+}
+
 #   Función para graficar una lista de tablas en scatterplot
 simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
   ggplot(data = df) +
@@ -44,13 +49,24 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
           legend.background = element_rect(fill = "white", color = "grey"))
 }
 
-#   Graficar temperatura en todos los casos
+#   Graficar temperatura
 labs <- c("Temperatura medida" = "#3b47fa")
+
 for (i in seq_along(data)) {
   print(simple_scatter(data[[i]], i, "time", "Temp", labs,
                        paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
                        "t [s]", "T [C]"))
 
   ggsave(paste("thermodynamics\\exp4\\report\\Tvt_", i, ".png", sep = ""),
+         width = 40, height = 30, units = "cm")
+}
+
+#   Graficar Ln(Temp)
+for (i in seq_along(data)) {
+  print(simple_scatter(data[[i]], i, "time", "LnTemp", labs,
+                       paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
+                       "t [s]", "Ln(T) [C]"))
+
+  ggsave(paste("thermodynamics\\exp4\\report\\LnTvt_", i, ".png", sep = ""),
          width = 40, height = 30, units = "cm")
 }
