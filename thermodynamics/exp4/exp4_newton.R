@@ -1,7 +1,14 @@
+#       To-do
+# - Simplificar los for loops
+# - Obtener h
+# - Parte 2
+
+#   Librerías
 library(ggplot2)
 library(readxl)
 library(Rmpfr)
 library(broom)
+library(dplyr)
 
 #   Datos experimentales
 #   Las tablas están ordenadas de menos a mayor masa
@@ -43,7 +50,7 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
           axis.line.y.left = element_line(color = "black", size = 1.1),
           legend.title = element_text(size = 21, family = "AvantGarde"),
           legend.text = element_text(size = 20, family = "AvantGarde"),
-          legend.position = c(0.87, 0.9),
+          legend.position = c(0.87, 0.5),
           legend.background = element_rect(fill = "white", color = "grey"))
 
   return(p)
@@ -55,6 +62,7 @@ params <- c()
 for (i in seq_along(data)[-6]) {
   params[[i]] <- c(data[[i]]$Temp[1], tail(data[[i]]$Temp, n = 1))
 }
+
 
 #   Regresión no lineal
 # Primero utilicé una self-starting function para estimar el parámetro de
@@ -94,6 +102,30 @@ for (i in seq_along(data)[-6]) {
 # Sabiendo que tau = 1/k
 tau_exp <- c()
 for (i in seq_along(data)[-6]) {
-  tau_exp[[i]] <- mpfr(1 / (coef(nls_models[[i]])), 20)
+  tau_exp[[i]] <- as.numeric(mpfr(1 / (coef(nls_models[[i]])), 20))
 }
-View(tau_exp)
+
+#   Tau vs masa y area superficial
+# Crear dataframe con todos los datos
+part1 <- as.data.frame(do.call(rbind, metadata[1:5]))
+colnames(part1) <- c("mass", "height", "diameter")
+part1 <- part1 %>%
+  mutate(
+    area = 2 * pi * (diameter / 2) * (height + (diameter / 2))
+  )
+part1$tau <- unlist(tau_exp)
+
+# tau vs masa
+nlabs <- c("Medidas" = "#3b47fa", "Ajuste" = "#ff9100")
+p <- simple_scatter(part1, 0, "mass", "tau", nlabs,
+                    paste("Tau v. masas de cilindros (g)", sep = ""),
+                    "m [g]", "tau [s]")
+ggsave(paste("thermodynamics\\exp4\\report\\media\\TauvM.png", sep = ""),
+       width = 25, height = 20, units = "cm")
+
+# tau vs area superficial
+p <- simple_scatter(part1, 0, "area", "tau", nlabs,
+                    paste("Tau v. masas de cilindros (g)", sep = ""),
+                    "Asup [cm^2]", "tau [s]")
+ggsave(paste("thermodynamics\\exp4\\report\\media\\TauvAsup.png", sep = ""),
+       width = 25, height = 20, units = "cm")
