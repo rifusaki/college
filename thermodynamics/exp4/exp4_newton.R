@@ -1,5 +1,6 @@
 library(ggplot2)
 library(readxl)
+library(Rmpfr)
 
 #   Datos experimentales
 #   Las tablas están ordenadas de menos a mayor masa
@@ -64,12 +65,6 @@ for (i in seq_along(data)) {
          width = 40, height = 30, units = "cm")
 }
 
-# Regresión lineal sobre Ln(Temp)
-models <- c()
-for (i in seq_along(data)) {
-  models[[i]] <- lm(LnTemp ~ time, data = data[[i]])
-}
-
 #   Graficar Ln(Temp)
 for (i in seq_along(data)) {
   p <- simple_scatter(data[[i]], i, "time", "LnTemp", labs,
@@ -84,3 +79,19 @@ for (i in seq_along(data)) {
                i, ".png", sep = ""),
          width = 40, height = 30, units = "cm")
 }
+
+# Regresión lineal sobre Ln(Temp)
+models <- c()
+for (i in seq_along(data)) {
+  models[[i]] <- lm(LnTemp ~ time, data = data[[i]])
+}
+
+#   Obtener constante de enfriamiento tau
+# Sabiendo que tau = -(Ln(Ti-Tf)/V_medido)^-1
+tau <- c()
+for (i in seq_along(data)) {
+  tau[[i]] <- mpfr(-models[[i]]$coefficients[2] /
+                     log(data[[i]]$Temp[1] - tail(data[[i]]$Temp, n = 1)), 20)
+}
+
+#   Tau vs área de cilindro
