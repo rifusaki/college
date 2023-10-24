@@ -9,7 +9,7 @@ library(broom)
 data <- lapply(excel_sheets("thermodynamics\\exp4\\data.xlsx"),
                function(sheet_name) {
                  read_excel("thermodynamics\\exp4\\data.xlsx",
-                            sheet = sheet_name, skip = 2,
+                            sheet = sheet_name, skip = 1,
                             col_names = c("Temp", "time"))
                })
 
@@ -52,7 +52,7 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
 
 #   Temperaturas iniciales y finales en cada caso
 params <- c()
-for (i in seq_along(data)) {
+for (i in seq_along(data)[-6]) {
   params[[i]] <- c(data[[i]]$Temp[1], tail(data[[i]]$Temp, n = 1))
 }
 
@@ -60,7 +60,7 @@ for (i in seq_along(data)) {
 # Primero utilicé una self-starting function para estimar el parámetro de
 # inicio de k. Luego utilicé nls normal con los parámetros ti y tf conocidos
 nls_models <- c()
-for (i in seq_along(data)) {
+for (i in seq_along(data)[-6]) {
   nls_models[[i]] <- nls(Temp ~ SSasymp(time, tf, ti, log_k), data = data[[i]])
   ti <- params[[i]][1]
   tf <- params[[i]][2]
@@ -72,7 +72,7 @@ for (i in seq_along(data)) {
 #   Graficar temperatura y regresión
 labs <- c("Temperatura medida" = "#3b47fa", "Ajuste" = "#ff9100")
 
-for (i in seq_along(data)) {
+for (i in seq_along(data)[-6]) {
   ti <- params[[i]][1]
   tf <- params[[i]][2]
   k <- coef(nls_models[[1]])
@@ -93,6 +93,7 @@ for (i in seq_along(data)) {
 #   Obtener constante de enfriamiento tau
 # Sabiendo que tau = 1/k
 tau_exp <- c()
-for (i in seq_along(data)) {
+for (i in seq_along(data)[-6]) {
   tau_exp[[i]] <- mpfr(1 / (coef(nls_models[[i]])), 20)
 }
+View(tau_exp)
