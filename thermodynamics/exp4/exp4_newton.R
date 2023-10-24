@@ -75,7 +75,7 @@ labs <- c("Temperatura medida" = "#3b47fa", "Ajuste" = "#ff9100")
 for (i in seq_along(data)[-6]) {
   ti <- params[[i]][1]
   tf <- params[[i]][2]
-  k <- coef(nls_models[[1]])
+  k <- coef(nls_models[[i]])
 
   p <- simple_scatter(data[[i]], i, "time", "Temp", labs,
                       paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
