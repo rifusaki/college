@@ -1,6 +1,7 @@
 library(ggplot2)
 library(readxl)
 library(Rmpfr)
+library(broom)
 
 #   Datos experimentales
 #   Las tablas están ordenadas de menos a mayor masa
@@ -8,7 +9,7 @@ library(Rmpfr)
 data <- lapply(excel_sheets("thermodynamics\\exp4\\data.xlsx"),
                function(sheet_name) {
                  read_excel("thermodynamics\\exp4\\data.xlsx",
-                            sheet = sheet_name, skip = 1,
+                            sheet = sheet_name, skip = 2,
                             col_names = c("Temp", "time"))
                })
 
@@ -21,10 +22,6 @@ metadata <- list(c(14.8, 1.6, 1.27),
                  c(50.2, 5.25, 1.26),
                  c(183.3, 6.332, 2.21, 5, 0.8))
 
-#   Logaritmo de temperaturas
-for (i in seq_along(data)) {
-  data[[i]]$LnTemp <- log(data[[i]]$Temp)
-}
 
 #   Función para graficar una lista de tablas en scatterplot
 simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
@@ -52,46 +49,50 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
   return(p)
 }
 
-#   Graficar temperatura
+
+#   Temperaturas iniciales y finales en cada caso
+params <- c()
+for (i in seq_along(data)) {
+  params[[i]] <- c(data[[i]]$Temp[1], tail(data[[i]]$Temp, n = 1))
+}
+
+#   Regresión no lineal
+# Primero utilicé una self-starting function para estimar el parámetro de
+# inicio de k. Luego utilicé nls normal con los parámetros ti y tf conocidos
+nls_models <- c()
+for (i in seq_along(data)) {
+  nls_models[[i]] <- nls(Temp ~ SSasymp(time, tf, ti, log_k), data = data[[i]])
+  ti <- params[[i]][1]
+  tf <- params[[i]][2]
+  nls_models[[i]] <- nls(Temp ~ tf + (ti - tf) * exp(-k * time),
+                         data = data[[i]],
+                         start = list(k = exp(coef(nls_models[[i]])[3])))
+}
+
+#   Graficar temperatura y regresión
 labs <- c("Temperatura medida" = "#3b47fa", "Ajuste" = "#ff9100")
 
 for (i in seq_along(data)) {
+  ti <- params[[i]][1]
+  tf <- params[[i]][2]
+  k <- coef(nls_models[[1]])
+
   p <- simple_scatter(data[[i]], i, "time", "Temp", labs,
                       paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
                       "t [s]", "T [C]")
+  p + geom_function(fun = function(time) tf + (ti - tf) * exp(-k * time),
+                    aes(x = time, y = 0,
+                        color = names(labs)[[2]]), size = 2)
 
   ggsave(paste("thermodynamics\\exp4\\report\\media\\Tvt_",
                i, ".png", sep = ""),
          width = 40, height = 30, units = "cm")
 }
 
-#   Graficar Ln(Temp)
-for (i in seq_along(data)) {
-  p <- simple_scatter(data[[i]], i, "time", "LnTemp", labs,
-                      paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
-                      "t [s]", "Ln(T) [C]")
-  p + geom_line(data = data.frame(LnTemp_pred = predict(models[[i]], data[[i]]),
-                                  time = data[[i]]$time),
-                aes(x = time, y = LnTemp_pred,
-                    color = names(labs)[[2]]), size = 2)
-
-  ggsave(paste("thermodynamics\\exp4\\report\\media\\LnTvt_",
-               i, ".png", sep = ""),
-         width = 40, height = 30, units = "cm")
-}
-
-# Regresión lineal sobre Ln(Temp)
-models <- c()
-for (i in seq_along(data)) {
-  models[[i]] <- lm(LnTemp ~ time, data = data[[i]])
-}
 
 #   Obtener constante de enfriamiento tau
-# Sabiendo que tau = -(Ln(Ti-Tf)/V_medido)^-1
-tau <- c()
+# Sabiendo que tau = 1/k
+tau_exp <- c()
 for (i in seq_along(data)) {
-  tau[[i]] <- mpfr(-models[[i]]$coefficients[2] /
-                     log(data[[i]]$Temp[1] - tail(data[[i]]$Temp, n = 1)), 20)
+  tau_exp[[i]] <- mpfr(1 / (coef(nls_models[[i]])), 20)
 }
-
-#   Tau vs área de cilindro
