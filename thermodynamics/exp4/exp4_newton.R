@@ -27,11 +27,11 @@ for (i in seq_along(data)) {
 
 #   Función para graficar una lista de tablas en scatterplot
 simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
-  ggplot(data = df) +
+  p <- ggplot(data = df) +
     geom_point(aes(x = !!as.name(x), y = !!as.name(y),
                    color = names(labels)[[1]]), size = 6) +
     scale_color_manual(values = labels,
-                       labels = names(labels),
+                       labels = waiver(),
                        name = "Leyenda") +
     ggtitle(title) +
     scale_x_continuous(name = xlabel) +
@@ -47,26 +47,40 @@ simple_scatter <- function(df, n, x, y, labels, title, xlabel, ylabel) {
           legend.text = element_text(size = 20, family = "AvantGarde"),
           legend.position = c(0.87, 0.9),
           legend.background = element_rect(fill = "white", color = "grey"))
+
+  return(p)
 }
 
 #   Graficar temperatura
-labs <- c("Temperatura medida" = "#3b47fa")
+labs <- c("Temperatura medida" = "#3b47fa", "Ajuste" = "#ff9100")
 
 for (i in seq_along(data)) {
-  print(simple_scatter(data[[i]], i, "time", "Temp", labs,
-                       paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
-                       "t [s]", "T [C]"))
+  p <- simple_scatter(data[[i]], i, "time", "Temp", labs,
+                      paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
+                      "t [s]", "T [C]")
 
-  ggsave(paste("thermodynamics\\exp4\\report\\Tvt_", i, ".png", sep = ""),
+  ggsave(paste("thermodynamics\\exp4\\report\\media\\Tvt_",
+               i, ".png", sep = ""),
          width = 40, height = 30, units = "cm")
+}
+
+# Regresión lineal sobre Ln(Temp)
+models <- c()
+for (i in seq_along(data)) {
+  models[[i]] <- lm(LnTemp ~ time, data = data[[i]])
 }
 
 #   Graficar Ln(Temp)
 for (i in seq_along(data)) {
-  print(simple_scatter(data[[i]], i, "time", "LnTemp", labs,
-                       paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
-                       "t [s]", "Ln(T) [C]"))
+  p <- simple_scatter(data[[i]], i, "time", "LnTemp", labs,
+                      paste("Temperatura (", metadata[[i]][1], "g)", sep = ""),
+                      "t [s]", "Ln(T) [C]")
+  p + geom_line(data = data.frame(LnTemp_pred = predict(models[[i]], data[[i]]),
+                                  time = data[[i]]$time),
+                aes(x = time, y = LnTemp_pred,
+                    color = names(labs)[[2]]), size = 2)
 
-  ggsave(paste("thermodynamics\\exp4\\report\\LnTvt_", i, ".png", sep = ""),
+  ggsave(paste("thermodynamics\\exp4\\report\\media\\LnTvt_",
+               i, ".png", sep = ""),
          width = 40, height = 30, units = "cm")
 }
