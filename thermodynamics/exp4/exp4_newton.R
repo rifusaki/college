@@ -1,6 +1,5 @@
 #       To-do
 # - Simplificar los for loops
-# - Obtener h
 # - Parte 2
 
 #   Librerías
@@ -123,9 +122,18 @@ p <- simple_scatter(part1, 0, "mass", "tau", nlabs,
 ggsave(paste("thermodynamics\\exp4\\report\\media\\TauvM.png", sep = ""),
        width = 25, height = 20, units = "cm")
 
-# tau vs area superficial
+# tau vs area superficial 
 p <- simple_scatter(part1, 0, "area", "tau", nlabs,
                     paste("Tau v. masas de cilindros (g)", sep = ""),
                     "Asup [cm^2]", "tau [s]")
 ggsave(paste("thermodynamics\\exp4\\report\\media\\TauvAsup.png", sep = ""),
        width = 25, height = 20, units = "cm")
+
+
+#   Para el cilindro calentándose con resistencia
+p <- simple_scatter(data[[6]], 0, "time", "Temp", labs,
+                    paste("Temperatura v. tiempo. Bloque con resistencia",
+                          sep = ""), "t [s]", "T [C]")
+
+ggsave(paste("thermodynamics\\exp4\\report\\media\\Tvt_res.png", sep = ""),
+       width = 40, height = 30, units = "cm")
